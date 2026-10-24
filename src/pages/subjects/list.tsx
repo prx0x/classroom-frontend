@@ -1,20 +1,37 @@
 import { ListView } from '@/components/refine-ui/views/list-view'
 import { Breadcrumb } from '@/components/refine-ui/layout/breadcrumb'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { Search } from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { DEPARTMENT_OPTION } from '@/constants'
 import { CreateButton } from '@/components/refine-ui/buttons/create'
 import { DataTable } from '@/components/refine-ui/data-table/data-table'
 import { useTable } from '@refinedev/react-table'
 import { Subject } from '@/types'
 import { ColumnDef } from '@tanstack/react-table'
 import { Badge } from '@/components/ui/badge'
-import { p } from 'node_modules/cn/dist/compiler2'
+
+type Department = {
+  id: number;
+  code: string;
+  name: string;
+};
+
+const API_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
 const SubjectList = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDepartment, setselectedDepartment] = useState('all')
+  const [selectedDepartment, setselectedDepartment] = useState('all');
+  const [departments, setDepartments] = useState<Department[]>([]);
+
+  useEffect(() => {
+  fetch(`${API_URL}/departments`)
+    .then((res) => {
+    if (!res.ok) throw new Error("Failed to fetch departments");
+    return res.json();
+    })
+    .then((data) => setDepartments(data.departments))
+    .catch(console.error);
+  }, []);
 
   const departmentFilters = selectedDepartment === 'all' ? [] : [
     {field:'department', operator:'eq' as const, value: selectedDepartment}
@@ -42,7 +59,7 @@ const SubjectList = () => {
         },
         {
             id:'department',
-            accessorKey:'department',
+            accessorKey:'department.name',
             size:150,
             header: () => <p className="column-title">Department</p>,
             cell: ({getValue})=> <Badge 
@@ -105,12 +122,15 @@ const SubjectList = () => {
                             <SelectItem value="all">
                                 All Departments
                             </SelectItem>
-                            {DEPARTMENT_OPTION.map(department=>(
-                                <SelectItem key={department.value}
-                                value={department.value}>
-                                    {department.label}
+                            {departments.map((department) => (
+                                <SelectItem
+                                    key={department.id}
+                                    value={department.name}
+                                >
+                                    {department.name}
                                 </SelectItem>
-                            ))}
+                                ))
+                            }
                         </SelectContent>
                 </Select>
 
