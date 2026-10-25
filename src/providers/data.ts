@@ -4,6 +4,10 @@ import { ListResponse } from "@/types";
 import { createDataProvider, type CreateDataProviderOptions } from "@refinedev/rest";
 import { data } from "react-router";
 
+if (!BACKEND_BASE_URL) {
+  throw new Error("VITE_BACKEND_BASE_URL is not defined");
+}
+
 const options: CreateDataProviderOptions = {
   getList: {
     getEndpoint: ({resource}) => resource,
@@ -24,12 +28,12 @@ const options: CreateDataProviderOptions = {
     },
 
     mapResponse: async (response) => {
-      const payload: ListResponse = await response.json();
+      const payload: ListResponse = await response.clone().json();
       return payload.data ?? payload.subjects ?? [];
     },
 
     getTotalCount: async (response) => {
-      const payload: ListResponse = await response.json();
+      const payload: ListResponse = await response.clone().json();
       return payload.pagination?.total ?? payload.data?.length ?? 0;
     },
   }

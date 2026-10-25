@@ -6,7 +6,6 @@ import {
 } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-
 import { BrowserRouter, Route, Routes, Outlet } from "react-router";
 import routerProvider, {
   NavigateToResource,
@@ -24,14 +23,15 @@ import { Header } from "./components/refine-ui/layout/header";
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider";
 import { Toaster } from "./components/refine-ui/notification/toaster";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
+import { BookOpen, GraduationCap, Home } from "lucide-react";
 
 import Dashboard from "./pages/dashboard";
 import SubjectList from "./pages/subjects/list";
+import SubjectCreate from "./pages/subjects/create";
+import ClassesList from "./pages/classes/list";
+import ClassesCreate from "./pages/classes/create";
 
 import "./App.css";
-import { BookOpen, Home } from "lucide-react";
-import SubjectCreate from "./pages/subjects/create";
-
 
 function App() {
   return (
@@ -60,7 +60,13 @@ function App() {
                     list:'/subjects',
                     create: '/subjects/create',
                     meta: {label:'Subjects', icon: <BookOpen/>}
-                  }
+                  },
+                  {
+                    name: 'classes',
+                    list:'/classes',
+                    create: '/classes/create',
+                    meta: {label:'Classes', icon: <GraduationCap />}
+                  },
                 ]
               }
             >
@@ -74,6 +80,10 @@ function App() {
                     <Route path='subjects'>
                       <Route index element={<SubjectList />} />
                       <Route path='create' element={<SubjectCreate />} />
+                    </Route>
+                    <Route path='classes'>
+                      <Route index element={<ClassesList />} />
+                      <Route path='create' element={<ClassesCreate />} />
                     </Route>
                 </Route>
               </Routes>
