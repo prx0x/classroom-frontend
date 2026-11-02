@@ -20,7 +20,7 @@ export function Breadcrumb() {
   const Link = useLink();
   const { breadcrumbs } = useBreadcrumb();
   const { resources } = useResourceParams();
-  const rootRouteResource = matchResourceFromRoute("/", resources);
+  const rootRouteResource = matchResourceFromRoute("/portal", resources);
 
   const breadCrumbItems = useMemo(() => {
     const list: {
@@ -31,9 +31,9 @@ export function Breadcrumb() {
 
     list.push({
       key: "breadcrumb-item-home",
-      href: rootRouteResource.matchedRoute ?? "/",
+      href: rootRouteResource.matchedRoute ?? "/portal",
       Component: (
-        <Link to={rootRouteResource.matchedRoute ?? "/"}>
+        <Link to={rootRouteResource.matchedRoute ?? "/portal"}>
           {rootRouteResource?.resource?.meta?.icon ?? (
             <Home className="h-4 w-4" />
           )}

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { useBack } from '@refinedev/core'
-import { ErrorMessage, useForm } from 'react-hook-form'
+import { useForm } from '@refinedev/react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { classSchema } from '@/lib/schema'
@@ -29,7 +29,7 @@ const Create = () => {
   const back = useBack();
 
   const form = useForm<z.infer<typeof classSchema>>({
-    resolver: zodResolver(classSchema),
+    resolver: zodResolver(classSchema) as any,
     refineCoreProps: {
         resource: 'classes',
         action: 'create',
@@ -91,7 +91,7 @@ const Create = () => {
     },
   ]
   const bannerPublicId = form.watch('bannerCldPubId');
-  const setBannerImage = (file, field) => {
+  const setBannerImage = (file:any, field:any) => {
     if (file){
         field.onChange(file.url);
         form.setValue('bannerCldPubId', file.publicId, {
@@ -113,7 +113,7 @@ const Create = () => {
         <h1 className="page-title">Create a class</h1>
         <div className="intro-row">
             <p>Provide the required information below to add a class.</p>
-            <Button onClick={useBack}>Go Back</Button>
+            <Button onClick={back}>Go Back</Button>
         </div>
 
         <Separator />
@@ -126,7 +126,7 @@ const Create = () => {
                 <Separator/>
                 <CardContent className='mt-7'>
                     <Form {...form}>
-                        <form onSubmit={handleSubmit(onSubmit)} 
+                        <form onSubmit={handleSubmit(onSubmit as any)} 
                         className="space-y-5">
                             <FormField
                                 control={control}
@@ -137,7 +137,7 @@ const Create = () => {
                                         <FormControl>
                                             <UploadWidget
                                             value = {field.value ? {url: field.value, publicId: bannerPublicId ?? ''}: null}
-                                            onChange={(file:any, field:any) => setBannerImage(file, field)}
+                                            onChange={(file:any) => setBannerImage(file, field)}
                                             />
                                         </FormControl>
                                         <FormMessage />
