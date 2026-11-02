@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ShieldAlert, Image as ImageIcon } from "lucide-react";
+import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "../motion/gsap";
 
 export interface EditorialImageProps {
   aspectRatio?: "16/10" | "16/9" | "4/3" | "1/1";
@@ -22,6 +23,37 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
   src,
   alt,
 }) => {
+  const figureRef = useRef<HTMLElement | null>(null);
+
+  useGSAP(
+    () => {
+      if (prefersReducedMotion() || !figureRef.current) return;
+
+      gsap.fromTo(
+        figureRef.current,
+        {
+          opacity: 0,
+          scale: 0.98,
+          y: 16,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: figureRef.current,
+            start: "top 90%",
+            once: true,
+          },
+          clearProps: "all",
+        }
+      );
+    },
+    { scope: figureRef }
+  );
+
   const aspectClass = {
     "16/10": "aspect-[16/10]",
     "16/9": "aspect-[16/9]",
@@ -30,7 +62,7 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
   }[aspectRatio];
 
   return (
-    <figure className={`space-y-2.5 ${className}`}>
+    <figure ref={figureRef} className={`space-y-2.5 ${className}`}>
       <div
         className={`relative w-full ${aspectClass} overflow-hidden rounded-md border border-[var(--pub-border)] bg-[var(--pub-paper)] pub-architectural-pattern flex flex-col justify-between p-6 sm:p-8`}
         role="img"

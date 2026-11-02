@@ -6,6 +6,7 @@ import { PageHero } from "../components/page-hero";
 import { SectionHeading } from "../components/section-heading";
 import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
+import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
   Compass,
   ScrollText,
@@ -24,6 +25,10 @@ export const AboutPage: React.FC = () => {
     title: "About",
     description: about.hero.description,
   });
+
+  const valuesRef = useScrollReveal({ selector: ".pub-card", y: 20, stagger: 0.1 });
+  const leadershipRef = useScrollReveal({ selector: "[data-reveal-leader]", y: 20, stagger: 0.1 });
+  const heritageRef = useScrollReveal({ selector: "[data-reveal-milestone]", y: 20, stagger: 0.1 });
 
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-20">
@@ -67,7 +72,7 @@ export const AboutPage: React.FC = () => {
 
       {/* 3. Guiding Core Values */}
       <section className="public-container" aria-labelledby="values-heading">
-        <div className="space-y-10">
+        <div ref={valuesRef} className="space-y-10">
           <SectionHeading
             overline="Guiding Principles"
             title="The foundational pillars of our academic community."
@@ -107,7 +112,7 @@ export const AboutPage: React.FC = () => {
 
       {/* 4. Leadership & Faculty Stewardship */}
       <section className="bg-[var(--pub-white)] border-y border-[var(--pub-border)] py-16 md:py-20" aria-labelledby="leadership-heading">
-        <div className="public-container space-y-10">
+        <div ref={leadershipRef} className="public-container space-y-10">
           <div className="max-w-3xl space-y-4">
             <span className="pub-badge-forest">{about.leadership.overline}</span>
             <h2 id="leadership-heading" className="text-3xl sm:text-4xl public-serif text-[var(--pub-ink)] font-normal">
@@ -120,7 +125,11 @@ export const AboutPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {about.leadership.commitments.map((item, idx) => (
-              <div key={idx} className="p-6 rounded-lg border border-[var(--pub-border)] bg-[var(--pub-paper)] space-y-3">
+              <div
+                key={idx}
+                data-reveal-leader
+                className="p-6 rounded-lg border border-[var(--pub-border)] bg-[var(--pub-paper)] space-y-3"
+              >
                 <div className="w-10 h-10 rounded-md bg-[var(--pub-forest)]/10 text-[var(--pub-forest)] flex items-center justify-center font-mono font-bold text-sm">
                   0{idx + 1}
                 </div>
@@ -146,7 +155,7 @@ export const AboutPage: React.FC = () => {
 
       {/* 5. Heritage & Timeline Milestones */}
       <section className="public-container" aria-labelledby="heritage-heading">
-        <div className="space-y-10">
+        <div ref={heritageRef} className="space-y-10">
           <SectionHeading
             overline={about.heritage.overline}
             title={about.heritage.heading}
@@ -155,7 +164,11 @@ export const AboutPage: React.FC = () => {
 
           <div className="relative border-l border-[var(--pub-border)] pl-6 ml-3 sm:ml-6 space-y-8">
             {about.heritage.milestones.map((m, idx) => (
-              <div key={idx} className="relative space-y-2">
+              <div
+                key={idx}
+                data-reveal-milestone
+                className="relative space-y-2"
+              >
                 <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-[var(--pub-forest)] border-2 border-[var(--pub-paper)]" />
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-mono font-semibold text-[var(--pub-gold)] uppercase tracking-wider">

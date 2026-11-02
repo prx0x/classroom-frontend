@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import { Breadcrumbs, BreadcrumbItem } from "./breadcrumbs";
 import { AlertCircle } from "lucide-react";
+import { useHeroEntrance } from "../motion/use-hero-entrance";
 
 interface PageHeroAction {
   label: string;
@@ -30,13 +31,17 @@ export const PageHero: React.FC<PageHeroProps> = ({
   disclaimer,
   metaItems,
 }) => {
+  const containerRef = useHeroEntrance();
+
   return (
     <section className="border-b border-[var(--pub-border)] bg-[var(--pub-white)]/40 py-10 sm:py-14">
       <div className="public-container">
-        <div className="max-w-4xl space-y-5">
-          <Breadcrumbs items={breadcrumbs} />
+        <div ref={containerRef} className="max-w-4xl space-y-5">
+          <div data-hero-elem>
+            <Breadcrumbs items={breadcrumbs} />
+          </div>
 
-          <div className="space-y-3">
+          <div data-hero-elem className="space-y-3">
             {badge && (
               <span className="pub-badge-forest">
                 {badge}
@@ -48,12 +53,12 @@ export const PageHero: React.FC<PageHeroProps> = ({
             </h1>
           </div>
 
-          <p className="text-base sm:text-lg md:text-xl text-[var(--pub-muted)] leading-relaxed max-w-3xl">
+          <p data-hero-elem className="text-base sm:text-lg md:text-xl text-[var(--pub-muted)] leading-relaxed max-w-3xl">
             {description}
           </p>
 
           {(primaryCta || secondaryCta) && (
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div data-hero-elem className="flex flex-wrap items-center gap-3 pt-2">
               {primaryCta && (
                 <Link to={primaryCta.href} className="pub-btn-primary">
                   {primaryCta.label}
@@ -68,14 +73,14 @@ export const PageHero: React.FC<PageHeroProps> = ({
           )}
 
           {disclaimer && (
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-[var(--pub-paper)] border border-[var(--pub-border)] text-xs text-[var(--pub-muted)] mt-2">
+            <div data-hero-elem className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-[var(--pub-paper)] border border-[var(--pub-border)] text-xs text-[var(--pub-muted)] mt-2">
               <AlertCircle className="w-3.5 h-3.5 text-[#8c6a23] shrink-0" />
               <span>{disclaimer}</span>
             </div>
           )}
 
           {metaItems && metaItems.length > 0 && (
-            <div className="pt-4 border-t border-[var(--pub-border)] flex flex-wrap gap-x-8 gap-y-3 text-xs">
+            <div data-hero-elem className="pt-4 border-t border-[var(--pub-border)] flex flex-wrap gap-x-8 gap-y-3 text-xs">
               {metaItems.map((item, idx) => (
                 <div key={idx} className="flex flex-col">
                   <span className="uppercase tracking-wider text-[var(--pub-muted)] font-mono text-[10px]">

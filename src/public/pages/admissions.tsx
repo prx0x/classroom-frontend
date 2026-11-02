@@ -6,6 +6,7 @@ import { PageHero } from "../components/page-hero";
 import { SectionHeading } from "../components/section-heading";
 import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
+import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
   FileText,
   Calendar,
@@ -23,6 +24,10 @@ export const AdmissionsPage: React.FC = () => {
     title: "Admissions",
     description: admissions.hero.description,
   });
+
+  const journeyRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });
+  const docsRef = useScrollReveal({ selector: "[data-reveal-doc]", y: 20, stagger: 0.1 });
+  const faqsRef = useScrollReveal({ selector: ".pub-card", y: 20, stagger: 0.1 });
 
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-20">
@@ -66,7 +71,7 @@ export const AdmissionsPage: React.FC = () => {
 
       {/* 3. 4-Stage Admissions Journey */}
       <section id="admissions-journey" className="public-container" aria-labelledby="journey-heading">
-        <div className="space-y-10">
+        <div ref={journeyRef} className="space-y-10">
           <SectionHeading
             overline="The Enrollment Roadmap"
             title="A clear, supportive step-by-step admissions journey."
@@ -119,7 +124,7 @@ export const AdmissionsPage: React.FC = () => {
 
       {/* 4. Documentation Checklist */}
       <section id="documentation" className="bg-[var(--pub-white)] border-y border-[var(--pub-border)] py-16 md:py-20" aria-labelledby="docs-heading">
-        <div className="public-container space-y-10">
+        <div ref={docsRef} className="public-container space-y-10">
           <SectionHeading
             overline={admissions.documentation.overline}
             title={admissions.documentation.heading}
@@ -130,6 +135,7 @@ export const AdmissionsPage: React.FC = () => {
             {admissions.documentation.categories.map((cat, idx) => (
               <div
                 key={idx}
+                data-reveal-doc
                 className="p-6 rounded-xl border border-[var(--pub-border)] bg-[var(--pub-paper)] space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-3">
@@ -204,7 +210,7 @@ export const AdmissionsPage: React.FC = () => {
 
       {/* 6. Frequently Asked Questions (FAQ) */}
       <section className="public-container" aria-labelledby="faq-heading">
-        <div className="space-y-10">
+        <div ref={faqsRef} className="space-y-10">
           <SectionHeading
             overline="Prospective Family Inquiries"
             title="Frequently Asked Questions."

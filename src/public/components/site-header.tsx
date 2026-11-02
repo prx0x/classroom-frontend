@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { schoolConfig } from "@/config/school";
 import { Menu, ArrowUpRight, GraduationCap } from "lucide-react";
@@ -6,14 +6,28 @@ import { MobileNavigation } from "./mobile-navigation";
 
 export const SiteHeader: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 16);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // initialize
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-[var(--pub-paper)]/95 backdrop-blur-md border-b border-[var(--pub-border)] transition-colors">
+      <header
+        className={`sticky top-0 z-40 bg-[var(--pub-paper)]/95 backdrop-blur-md border-b border-[var(--pub-border)] transition-all duration-200 ${
+          scrolled ? "shadow-sm bg-[var(--pub-paper)]/98" : ""
+        }`}
+      >
         <div className="public-container">
           <div className="flex items-center justify-between h-20">
             {/* School Brand Mark / Logo */}
@@ -58,53 +72,39 @@ export const SiteHeader: React.FC = () => {
               })}
             </nav>
 
-            {/* Action Buttons: Classroom Portal & Apply Now */}
-            <div className="hidden sm:flex items-center gap-3">
+            {/* Desktop Action CTAs (Admissions + Internal Portal) */}
+            <div className="hidden lg:flex items-center gap-4">
               <Link
-                to={schoolConfig.portalNavigation.href}
+                to="/portal"
                 className="pub-btn-portal"
-                title="Open the classroom management portal"
+                title="Access internal classroom management system"
               >
                 <GraduationCap className="w-4 h-4 text-[var(--pub-forest)]" />
                 <span>Portal</span>
               </Link>
 
-              <Link
-                to="/admissions"
-                className="pub-btn-primary"
-              >
-                <span>Apply Now</span>
-                <ArrowUpRight className="w-4 h-4 ml-1.5 opacity-80" />
+              <Link to="/admissions" className="pub-btn-primary">
+                <span>Admissions</span>
+                <ArrowUpRight className="w-4 h-4 ml-1.5" />
               </Link>
             </div>
 
-            {/* Mobile Actions: Compact Portal link and Accessible Menu Toggle */}
-            <div className="flex lg:hidden items-center gap-2">
-              <Link
-                to={schoolConfig.portalNavigation.href}
-                className="pub-btn-portal text-xs py-1.5 px-2.5 sm:hidden"
-                title="Classroom Portal"
-              >
-                <GraduationCap className="w-4 h-4 text-[var(--pub-forest)]" />
-                <span>Portal</span>
-              </Link>
-
-              <button
-                type="button"
-                onClick={toggleMobileMenu}
-                aria-expanded={mobileMenuOpen}
-                aria-controls="mobile-navigation-dialog"
-                aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-                className="p-2 rounded-md text-[var(--pub-ink)] hover:bg-[var(--pub-border)] focus-visible:outline-2 focus-visible:outline-[var(--pub-forest)]"
-              >
-                <Menu className="w-6 h-6" aria-hidden="true" />
-              </button>
-            </div>
+            {/* Mobile Menu Trigger Button */}
+            <button
+              type="button"
+              onClick={toggleMobileMenu}
+              className="lg:hidden p-2 rounded-md text-[var(--pub-ink)] hover:bg-[var(--pub-white)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--pub-forest)]"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-drawer"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Accessible Mobile Drawer / Modal */}
+      {/* Accessible Mobile Drawer Navigation */}
       <MobileNavigation
         isOpen={mobileMenuOpen}
         onClose={closeMobileMenu}

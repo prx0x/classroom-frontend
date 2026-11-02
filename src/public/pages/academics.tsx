@@ -6,6 +6,7 @@ import { PageHero } from "../components/page-hero";
 import { SectionHeading } from "../components/section-heading";
 import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
+import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
   BookOpen,
   GraduationCap,
@@ -24,6 +25,10 @@ export const AcademicsPage: React.FC = () => {
     title: "Academics",
     description: academics.hero.description,
   });
+
+  const divisionsRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });
+  const departmentsRef = useScrollReveal({ selector: "[data-reveal-dept]", y: 24, stagger: 0.12 });
+  const supportRef = useScrollReveal({ selector: ".pub-card", y: 20, stagger: 0.1 });
 
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-20">
@@ -67,7 +72,7 @@ export const AcademicsPage: React.FC = () => {
 
       {/* 3. Grade Divisions & Learning Stages */}
       <section id="grade-divisions" className="public-container" aria-labelledby="divisions-heading">
-        <div className="space-y-10">
+        <div ref={divisionsRef} className="space-y-10">
           <SectionHeading
             overline="Structured Learning Stages"
             title="Curriculum divisions tailored to developmental maturity."
@@ -124,7 +129,7 @@ export const AcademicsPage: React.FC = () => {
 
       {/* 4. Academic Departments & Disciplines */}
       <section className="bg-[var(--pub-white)] border-y border-[var(--pub-border)] py-16 md:py-20" aria-labelledby="departments-heading">
-        <div className="public-container space-y-10">
+        <div ref={departmentsRef} className="public-container space-y-10">
           <SectionHeading
             overline="Fields of Study"
             title="Departmental disciplines and areas of inquiry."
@@ -135,6 +140,7 @@ export const AcademicsPage: React.FC = () => {
             {academics.departments.map((dept, idx) => (
               <div
                 key={dept.id}
+                data-reveal-dept
                 className="p-6 sm:p-8 rounded-xl border border-[var(--pub-border)] bg-[var(--pub-paper)]/50 space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-3">
@@ -186,7 +192,7 @@ export const AcademicsPage: React.FC = () => {
 
       {/* 5. Academic Support & Faculty Guidance */}
       <section id="academic-support" className="public-container" aria-labelledby="support-heading">
-        <div className="space-y-10">
+        <div ref={supportRef} className="space-y-10">
           <SectionHeading
             overline={academics.academicSupport.overline}
             title={academics.academicSupport.heading}

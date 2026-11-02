@@ -6,6 +6,7 @@ import { PageHero } from "../components/page-hero";
 import { SectionHeading } from "../components/section-heading";
 import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
+import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
   Compass,
   Building,
@@ -24,6 +25,9 @@ export const CampusPage: React.FC = () => {
     title: "Campus",
     description: campus.hero.description,
   });
+
+  const facilitiesRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });
+  const safetyRef = useScrollReveal({ selector: "[data-reveal-safety]", y: 20, stagger: 0.1 });
 
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-20">
@@ -67,7 +71,7 @@ export const CampusPage: React.FC = () => {
 
       {/* 3. Detailed Campus Facilities Catalog */}
       <section id="facilities" className="public-container" aria-labelledby="facilities-heading">
-        <div className="space-y-10">
+        <div ref={facilitiesRef} className="space-y-10">
           <SectionHeading
             overline="Learning Environments"
             title="Specialized facilities designed for focused discovery."
@@ -125,7 +129,7 @@ export const CampusPage: React.FC = () => {
 
       {/* 4. Health, Safety & Universal Accessibility */}
       <section className="bg-[var(--pub-white)] border-y border-[var(--pub-border)] py-16 md:py-20" aria-labelledby="safety-heading">
-        <div className="public-container space-y-10">
+        <div ref={safetyRef} className="public-container space-y-10">
           <SectionHeading
             overline={campus.accessibilityAndSafety.overline}
             title={campus.accessibilityAndSafety.heading}
@@ -136,6 +140,7 @@ export const CampusPage: React.FC = () => {
             {campus.accessibilityAndSafety.policies.map((pol, idx) => (
               <div
                 key={idx}
+                data-reveal-safety
                 className="p-6 rounded-lg border border-[var(--pub-border)] bg-[var(--pub-paper)] space-y-3"
               >
                 <div className="w-10 h-10 rounded-md bg-[var(--pub-forest)]/10 text-[var(--pub-forest)] flex items-center justify-center font-mono font-bold text-sm">

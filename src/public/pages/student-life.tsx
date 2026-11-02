@@ -6,6 +6,7 @@ import { PageHero } from "../components/page-hero";
 import { SectionHeading } from "../components/section-heading";
 import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
+import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
   Sparkles,
   HeartHandshake,
@@ -24,6 +25,10 @@ export const StudentLifePage: React.FC = () => {
     title: "Student Life",
     description: studentLife.hero.description,
   });
+
+  const activitiesRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });
+  const traditionsRef = useScrollReveal({ selector: "[data-reveal-tradition]", y: 20, stagger: 0.1 });
+  const pastoralRef = useScrollReveal({ selector: ".pub-card", y: 20, stagger: 0.1 });
 
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-20">
@@ -67,7 +72,7 @@ export const StudentLifePage: React.FC = () => {
 
       {/* 3. Co-Curricular Activity Domains */}
       <section id="activities" className="public-container" aria-labelledby="activities-heading">
-        <div className="space-y-10">
+        <div ref={activitiesRef} className="space-y-10">
           <SectionHeading
             overline="Student Endeavour"
             title="Clubs, athletics, and creative pursuits."
@@ -122,7 +127,7 @@ export const StudentLifePage: React.FC = () => {
 
       {/* 4. Seasonal Traditions */}
       <section className="bg-[var(--pub-white)] border-y border-[var(--pub-border)] py-16 md:py-20" aria-labelledby="traditions-heading">
-        <div className="public-container space-y-10">
+        <div ref={traditionsRef} className="public-container space-y-10">
           <SectionHeading
             overline="Community Rituals"
             title="Seasonal traditions that bind our school community."
@@ -133,6 +138,7 @@ export const StudentLifePage: React.FC = () => {
             {studentLife.traditions.map((trad, idx) => (
               <div
                 key={idx}
+                data-reveal-tradition
                 className="p-6 rounded-xl border border-[var(--pub-border)] bg-[var(--pub-paper)] space-y-3 flex flex-col justify-between"
               >
                 <div className="space-y-2">
@@ -158,7 +164,7 @@ export const StudentLifePage: React.FC = () => {
 
       {/* 5. Pastoral Care & Well-Being Scaffolding */}
       <section id="pastoral-care" className="public-container" aria-labelledby="pastoral-heading">
-        <div className="space-y-10">
+        <div ref={pastoralRef} className="space-y-10">
           <SectionHeading
             overline={studentLife.studentSupport.overline}
             title={studentLife.studentSupport.heading}

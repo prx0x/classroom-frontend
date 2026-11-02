@@ -6,6 +6,7 @@ import { PageHero } from "../components/page-hero";
 import { SectionHeading } from "../components/section-heading";
 import { EditorialImage } from "../components/editorial-image";
 import { CallToAction } from "../components/call-to-action";
+import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
   Mail,
   Phone,
@@ -26,6 +27,9 @@ export const ContactPage: React.FC = () => {
     title: "Contact",
     description: contactPage.hero.description,
   });
+
+  const directoryRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });
+  const locationRef = useScrollReveal({ selector: "[data-reveal-loc]", y: 20, stagger: 0.1 });
 
   // Interactive Email Drafter state
   const [inquiryType, setInquiryType] = useState<string>("admissions");
@@ -75,7 +79,7 @@ export const ContactPage: React.FC = () => {
 
       {/* 2. Departmental Directory */}
       <section className="public-container" aria-labelledby="directory-heading">
-        <div className="space-y-10">
+        <div ref={directoryRef} className="space-y-10">
           <SectionHeading
             overline="Departmental Contacts"
             title="Direct communication directory."
@@ -266,7 +270,7 @@ export const ContactPage: React.FC = () => {
 
       {/* 4. Campus Location & Visitor Instructions */}
       <section className="public-container" aria-labelledby="location-heading">
-        <div className="p-8 sm:p-10 rounded-xl pub-surface border border-[var(--pub-border)] space-y-6">
+        <div ref={locationRef} className="p-8 sm:p-10 rounded-xl pub-surface border border-[var(--pub-border)] space-y-6">
           <div className="space-y-3">
             <span className="pub-badge-forest">{contactPage.visitInfo.overline}</span>
             <h2 id="location-heading" className="text-2xl sm:text-3xl public-serif text-[var(--pub-ink)] font-normal">
@@ -278,7 +282,10 @@ export const ContactPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-            <div className="p-5 rounded-lg bg-[var(--pub-paper)] border border-[var(--pub-border)] space-y-2">
+            <div
+              data-reveal-loc
+              className="p-5 rounded-lg bg-[var(--pub-paper)] border border-[var(--pub-border)] space-y-2"
+            >
               <div className="flex items-center gap-2 text-sm font-semibold text-[var(--pub-ink)]">
                 <MapPin className="w-4 h-4 text-[var(--pub-forest)]" />
                 <span>Campus Location Address</span>
@@ -288,7 +295,10 @@ export const ContactPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-5 rounded-lg bg-[var(--pub-paper)] border border-[var(--pub-border)] space-y-2">
+            <div
+              data-reveal-loc
+              className="p-5 rounded-lg bg-[var(--pub-paper)] border border-[var(--pub-border)] space-y-2"
+            >
               <div className="flex items-center gap-2 text-sm font-semibold text-[var(--pub-ink)]">
                 <ShieldCheck className="w-4 h-4 text-[var(--pub-forest)]" />
                 <span>Visitor Security &amp; Access</span>

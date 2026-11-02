@@ -5,6 +5,9 @@ import { SectionHeading } from "../components/section-heading";
 import { PillarCard } from "../components/pillar-card";
 import { EditorialImage } from "../components/editorial-image";
 import { CallToAction } from "../components/call-to-action";
+import { useHeroEntrance } from "../motion/use-hero-entrance";
+import { useScrollReveal } from "../motion/use-scroll-reveal";
+import { useEditorialPillarsMotion } from "../motion/use-editorial-pillars";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -21,6 +24,17 @@ import {
 export const HomePage: React.FC = () => {
   const { hero, intro, pillars, academicsPreview, campusPreview, studentLifePreview, values, admissionsCta, portalBanner } = schoolConfig;
 
+  // GSAP Motion Hooks
+  const heroRef = useHeroEntrance();
+  const introRef = useScrollReveal({ selector: "[data-reveal]", y: 22, stagger: 0.1 });
+  const pillarsContainerRef = useEditorialPillarsMotion();
+  const academicsRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });
+  const campusRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });
+  const studentLifeRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });
+  const valuesRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.1 });
+  const admissionsRef = useScrollReveal({ selector: "[data-reveal-step]", y: 24, stagger: 0.1 });
+  const portalRef = useScrollReveal({ selector: "[data-reveal-portal]", y: 20 });
+
   return (
     <div className="flex-1 flex flex-col">
       {/* =========================================================
@@ -28,12 +42,12 @@ export const HomePage: React.FC = () => {
           Editorial campus journal headline, dual CTAs, architectural composition
           ========================================================= */}
       <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 border-b border-[var(--pub-border)] bg-[var(--pub-paper)] overflow-hidden">
-        <div className="public-container">
+        <div ref={heroRef} className="public-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             {/* Left Column: Editorial Headline & Actions (7 cols) */}
             <div className="lg:col-span-7 space-y-7">
               {/* Status Badge */}
-              <div className="inline-flex items-center gap-2">
+              <div data-hero-elem className="inline-flex items-center gap-2">
                 <span className="pub-badge-unverified text-[11px]">
                   <ShieldAlert className="w-3.5 h-3.5" />
                   {hero.badge}
@@ -41,17 +55,17 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight public-serif text-[var(--pub-ink)] leading-[1.12]">
+              <h1 data-hero-elem className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight public-serif text-[var(--pub-ink)] leading-[1.12]">
                 {hero.headline}
               </h1>
 
               {/* Supporting Subheadline */}
-              <p className="text-lg sm:text-xl text-[var(--pub-muted)] public-sans font-normal leading-relaxed max-w-2xl">
+              <p data-hero-elem className="text-lg sm:text-xl text-[var(--pub-muted)] public-sans font-normal leading-relaxed max-w-2xl">
                 {hero.subheadline}
               </p>
 
               {/* Primary Actions Row */}
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+              <div data-hero-elem className="pt-2 flex flex-wrap items-center gap-4">
                 <Link to={hero.primaryCta.href} className="pub-btn-primary text-base px-6 py-3.5">
                   <span>{hero.primaryCta.label}</span>
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -72,7 +86,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Quick Metadata Highlights */}
-              <div className="pt-6 border-t border-[var(--pub-border)] grid grid-cols-2 sm:grid-cols-3 gap-6 text-xs text-[var(--pub-muted)]">
+              <div data-hero-elem className="pt-6 border-t border-[var(--pub-border)] grid grid-cols-2 sm:grid-cols-3 gap-6 text-xs text-[var(--pub-muted)]">
                 <div>
                   <strong className="block text-[var(--pub-ink)] font-semibold text-sm public-serif">
                     Intellectual Rigor
@@ -95,7 +109,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Right Column: Architectural / Campus Study Visual Composition (5 cols) */}
-            <div className="lg:col-span-5">
+            <div data-hero-elem className="lg:col-span-5">
               <div className="relative">
                 <div className="absolute -inset-2 bg-gradient-to-tr from-[var(--pub-forest)]/10 to-[var(--pub-gold)]/10 rounded-xl blur-xs transform -rotate-1 pointer-events-none" />
                 <div className="relative rounded-lg pub-surface p-4 sm:p-5 shadow-sm space-y-4">
@@ -125,9 +139,9 @@ export const HomePage: React.FC = () => {
           Educational approach narrative and positioning
           ========================================================= */}
       <section className="py-16 sm:py-24 bg-[var(--pub-white)] border-b border-[var(--pub-border)]">
-        <div className="public-container">
+        <div ref={introRef} className="public-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            <div className="lg:col-span-5 space-y-4">
+            <div data-reveal className="lg:col-span-5 space-y-4">
               <span className="text-xs font-semibold uppercase tracking-wider text-[var(--pub-forest)]">
                 {intro.overline}
               </span>
@@ -136,20 +150,23 @@ export const HomePage: React.FC = () => {
               </h2>
             </div>
 
-            <div className="lg:col-span-7 space-y-6">
+            <div data-reveal className="lg:col-span-7 space-y-6">
               {intro.paragraphs.map((paragraph, idx) => (
-                <p key={idx} className="text-base sm:text-lg text-[var(--pub-muted)] leading-relaxed">
+                <p
+                  key={idx}
+                  className="text-base sm:text-lg text-[var(--pub-muted)] public-sans font-normal leading-relaxed"
+                >
                   {paragraph}
                 </p>
               ))}
 
               <div className="pub-quote-box my-6">
-                <p className="text-lg sm:text-xl text-[var(--pub-ink)] font-normal leading-relaxed">
-                  &ldquo;A school must be more than an exam repository; it should be a sanctuary of genuine curiosity where students learn how to think, not merely what to think.&rdquo;
+                <p className="text-lg public-serif text-[var(--pub-ink)]">
+                  "Knowledge is not merely acquired; it is interrogated, applied, and shared in service of a greater common good."
                 </p>
-                <div className="text-xs font-sans text-[var(--pub-muted)] uppercase tracking-wider mt-3 not-italic">
-                  Educational Leadership Foundation &bull; Oakridge Working Draft
-                </div>
+                <cite className="block text-xs uppercase tracking-wider font-mono text-[var(--pub-forest)] not-italic mt-2">
+                  Academic Mission Statement (Provisional)
+                </cite>
               </div>
 
               <div className="pt-2">
@@ -168,21 +185,28 @@ export const HomePage: React.FC = () => {
 
       {/* =========================================================
           SECTION 3: LEARNING APPROACH / PILLARS
-          Four distinct educational pillars in a 4-column layout
+          Editorial desktop pinned narrative moment (>=1024px)
+          and fluid vertical stack on mobile/tablet (<1024px)
           ========================================================= */}
       <section className="py-16 sm:py-24 bg-[var(--pub-paper)] border-b border-[var(--pub-border)]">
-        <div className="public-container">
-          <SectionHeading
-            overline="Pedagogical Core"
-            title="Four pillars that shape our learning community."
-            description="Our academic framework weaves rigorous scholarship with creative exploration, civic responsibility, and empirical discipline."
-            cta={{ label: "Explore curriculum pathways", href: "/academics" }}
-          />
+        <div ref={pillarsContainerRef} className="public-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div className="lg:col-span-4 editorial-pillar-heading space-y-4">
+              <SectionHeading
+                overline="Pedagogical Core"
+                title="Four pillars that shape our learning community."
+                description="Our academic framework weaves rigorous scholarship with creative exploration, civic responsibility, and empirical discipline."
+                cta={{ label: "Explore curriculum pathways", href: "/academics" }}
+              />
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {pillars.map((pillar) => (
-              <PillarCard key={pillar.id} pillar={pillar} />
-            ))}
+            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {pillars.map((pillar) => (
+                <div key={pillar.id} className="editorial-pillar-card">
+                  <PillarCard pillar={pillar} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -192,7 +216,7 @@ export const HomePage: React.FC = () => {
           Curriculum overview with pathways and discipline focus
           ========================================================= */}
       <section className="py-16 sm:py-24 bg-[var(--pub-white)] border-b border-[var(--pub-border)]">
-        <div className="public-container">
+        <div ref={academicsRef} className="public-container">
           <SectionHeading
             overline={academicsPreview.overline}
             title={academicsPreview.heading}
@@ -263,7 +287,7 @@ export const HomePage: React.FC = () => {
           Architectural spaces, labs, library, and facilities
           ========================================================= */}
       <section className="py-16 sm:py-24 bg-[var(--pub-paper)] border-b border-[var(--pub-border)]">
-        <div className="public-container">
+        <div ref={campusRef} className="public-container">
           <SectionHeading
             overline={campusPreview.overline}
             title={campusPreview.heading}
@@ -346,7 +370,7 @@ export const HomePage: React.FC = () => {
           Clubs, athletics, arts, and community engagement
           ========================================================= */}
       <section className="py-16 sm:py-24 bg-[var(--pub-white)] border-b border-[var(--pub-border)]">
-        <div className="public-container">
+        <div ref={studentLifeRef} className="public-container">
           <SectionHeading
             overline={studentLifePreview.overline}
             title={studentLifePreview.heading}
@@ -396,7 +420,7 @@ export const HomePage: React.FC = () => {
                     className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--pub-forest)] hover:underline"
                   >
                     <span>Student Life Details</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -417,7 +441,7 @@ export const HomePage: React.FC = () => {
           Core values guiding daily community life
           ========================================================= */}
       <section className="py-16 sm:py-24 bg-[var(--pub-paper)] border-b border-[var(--pub-border)]">
-        <div className="public-container">
+        <div ref={valuesRef} className="public-container">
           <SectionHeading
             overline={values.overline}
             title={values.heading}
@@ -460,7 +484,7 @@ export const HomePage: React.FC = () => {
           Four clear steps and direct admissions inquiry
           ========================================================= */}
       <section className="py-16 sm:py-24 bg-[var(--pub-white)] border-b border-[var(--pub-border)]">
-        <div className="public-container">
+        <div ref={admissionsRef} className="public-container">
           <div className="mb-12">
             <SectionHeading
               overline={admissionsCta.overline}
@@ -473,6 +497,7 @@ export const HomePage: React.FC = () => {
               {admissionsCta.steps.map((st) => (
                 <div
                   key={st.step}
+                  data-reveal-step
                   className="p-6 rounded-lg pub-surface bg-[var(--pub-paper)] border border-[var(--pub-border)] flex flex-col justify-between"
                 >
                   <div className="space-y-3">
@@ -510,8 +535,8 @@ export const HomePage: React.FC = () => {
           Internal administrative and classroom tool access
           ========================================================= */}
       <section className="py-14 bg-[var(--pub-paper)]">
-        <div className="public-container">
-          <div className="p-8 sm:p-10 rounded-xl bg-[#1b342b] text-[var(--pub-white)] flex flex-col md:flex-row items-center justify-between gap-6 border border-[#264b3e] shadow-sm">
+        <div ref={portalRef} className="public-container">
+          <div data-reveal-portal className="p-8 sm:p-10 rounded-xl bg-[#1b342b] text-[var(--pub-white)] flex flex-col md:flex-row items-center justify-between gap-6 border border-[#264b3e] shadow-sm">
             <div className="space-y-2 text-center md:text-left max-w-2xl">
               <div className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--pub-gold)] uppercase tracking-wider">
                 <GraduationCap className="w-4 h-4" />
