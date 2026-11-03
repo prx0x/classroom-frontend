@@ -1,0 +1,203 @@
+/**
+ * Cinematic Scroll-Controlled Campus Experience Styles
+ * Scoped to .cinematic-stage and .cinematic-track
+ * Adheres strictly to schoolConfig design tokens and Editorial Campus Journal aesthetic.
+ */
+
+.cinematic-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: var(--pub-ink);
+  color: var(--pub-paper);
+}
+
+/* Master Scroll Track (Provides the scroll distance for GSAP ScrollTrigger) */
+.cinematic-track {
+  position: relative;
+  width: 100%;
+  min-height: 500vh;
+}
+
+@media (max-width: 1023px) {
+  .cinematic-track {
+    min-height: 380vh;
+  }
+}
+
+/* The Pinned Stage (Kept fixed at top: 0, height: 100vh while user scrubs the track) */
+.cinematic-viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: #0d1a18;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  contain: paint layout;
+}
+
+/* 3D Camera Rig: The master container that moves in 3D space */
+.cinematic-camera {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* Individual Scene Layer Planes */
+.cinematic-scene-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.cinematic-interactive {
+  pointer-events: auto;
+}
+
+/* Architectural Framing & HUD Overlay (Fixed atop pinned viewport) */
+.cinematic-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5.5rem 1.25rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .cinematic-hud {
+    padding: 6rem 2.5rem 1.75rem;
+  }
+}
+
+/* Subtle Architectural Viewfinder Reticle */
+.cinematic-reticle-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: rgba(195, 154, 82, 0.45);
+  pointer-events: none;
+  z-index: 36;
+}
+.cinematic-reticle-tl { top: 88px; left: 20px; border-top: 1.5px solid; border-left: 1.5px solid; }
+.cinematic-reticle-tr { top: 88px; right: 20px; border-top: 1.5px solid; border-right: 1.5px solid; }
+.cinematic-reticle-bl { bottom: 20px; left: 20px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.cinematic-reticle-br { bottom: 20px; right: 20px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+/* Interactive Scene Jump Pills */
+.cinematic-scene-nav {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  background-color: rgba(17, 34, 30, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(195, 154, 82, 0.35);
+  border-radius: 9999px;
+  padding: 0.25rem 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.cinematic-scene-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 9999px;
+  color: var(--pub-paper);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cinematic-scene-btn:hover {
+  opacity: 1;
+  background-color: rgba(195, 154, 82, 0.15);
+  color: var(--pub-gold);
+}
+
+.cinematic-scene-btn.is-active {
+  opacity: 1;
+  background-color: var(--pub-forest);
+  color: var(--pub-paper);
+  border: 1px solid rgba(195, 154, 82, 0.5);
+  box-shadow: 0 0 10px rgba(195, 154, 82, 0.25);
+}
+
+/* Cinematic Editorial Floating Cards */
+.cinematic-card {
+  background: rgba(23, 43, 39, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(195, 154, 82, 0.35);
+  border-radius: 0.5rem;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(195, 154, 82, 0.1);
+  color: var(--pub-paper);
+}
+
+.cinematic-card-light {
+  background: rgba(245, 242, 233, 0.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--pub-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 16px 36px -8px rgba(23, 43, 43, 0.25);
+  color: var(--pub-ink);
+}
+
+/* Depth Vignette for Edge Darkening */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(13, 26, 24, 0.75) 100%);
+  z-index: 30;
+}
+
+/* Reduced Motion Fallback Mode */
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-track {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .cinematic-viewport {
+    height: auto !important;
+    min-height: auto !important;
+    perspective: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .cinematic-camera,
+  .cinematic-scene-layer {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .cinematic-hud {
+    display: none !important;
+  }
+}

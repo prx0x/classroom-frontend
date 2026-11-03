@@ -13,11 +13,11 @@ export const SiteFooter: React.FC = () => {
           {/* Column 1: Identity & Motto (4 cols) */}
           <div className="lg:col-span-4 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[var(--pub-forest)] text-[var(--pub-white)] flex items-center justify-center font-bold public-serif text-xl">
-                O
+              <div className="w-10 h-10 rounded-full bg-[var(--pub-forest)] text-[var(--pub-white)] flex items-center justify-center font-bold public-serif text-sm tracking-tight">
+                IK
               </div>
               <span className="font-semibold text-xl public-serif text-[var(--pub-white)]">
-                {schoolConfig.name.split(" (")[0]}
+                {schoolConfig.shortName}
               </span>
             </div>
 
@@ -30,13 +30,13 @@ export const SiteFooter: React.FC = () => {
                 Campus Motto
               </div>
               <p className="text-sm italic font-normal text-[var(--pub-white)]/90 public-serif">
-                &ldquo;Cultivating Curiosity, Character, and Community.&rdquo;
+                &ldquo;Work is Worship&rdquo;
               </p>
             </div>
 
             <div className="pt-2">
               <span className="pub-badge-unverified text-[11px]">
-                Official School Identity: Pending Confirmation
+                Institute of National Importance &bull; Established 2013
               </span>
             </div>
           </div>
@@ -111,7 +111,7 @@ export const SiteFooter: React.FC = () => {
         {/* Bottom Bar: Copyright & Compliance */}
         <div className="mt-14 pt-8 border-t border-[#263c3c] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#95a3a2]">
           <p>
-            &copy; {currentYear} {schoolConfig.shortName.split(" (")[0]}. All rights reserved. Educational content structured for Phase 2 review.
+            &copy; {currentYear} {schoolConfig.shortName}. All rights reserved. Educational content structured for Phase 2 review.
           </p>
           <div className="flex flex-wrap items-center gap-6">
             <Link to="/about" className="hover:text-[var(--pub-white)] transition-colors">

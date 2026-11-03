@@ -34,17 +34,17 @@ export const SiteHeader: React.FC = () => {
             <Link
               to="/"
               className="flex items-center gap-3 text-[var(--pub-ink)] hover:opacity-90 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--pub-forest)]"
-              aria-label={`${schoolConfig.shortName.split(" (")[0]} - Back to homepage`}
+              aria-label={`${schoolConfig.shortName} - Back to homepage`}
             >
-              <div className="w-10 h-10 rounded-full bg-[var(--pub-forest)] text-[var(--pub-white)] flex items-center justify-center font-bold public-serif text-xl shadow-xs">
-                O
+              <div className="w-10 h-10 rounded-full bg-[var(--pub-forest)] text-[var(--pub-white)] flex items-center justify-center font-bold public-serif text-sm tracking-tight shadow-xs">
+                IK
               </div>
               <div className="flex flex-col">
                 <span className="font-semibold text-lg tracking-tight public-serif leading-none">
-                  {schoolConfig.name.split(" (")[0]}
+                  {schoolConfig.shortName}
                 </span>
                 <span className="text-xs text-[var(--pub-muted)] uppercase tracking-wider font-medium mt-1">
-                  Editorial Campus
+                  Institute of National Importance
                 </span>
               </div>
             </Link>

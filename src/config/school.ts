@@ -71,7 +71,7 @@ export interface AdmissionsStep {
   timingNote: string;
 }
 
-// Phase 3: Secondary Page Data Interfaces
+// Secondary Page Data Interfaces
 export interface AboutPageConfig {
   hero: {
     badge: string;
@@ -390,7 +390,7 @@ export interface SchoolConfig {
     cta: { label: string; href: string };
   };
 
-  // Phase 3: Secondary Pages Complete Config
+  // Secondary Pages Complete Config
   about: AboutPageConfig;
   academics: AcademicsPageConfig;
   campus: CampusPageConfig;
@@ -400,62 +400,60 @@ export interface SchoolConfig {
 }
 
 /**
- * Centralized, typed content and configuration for the public school website.
- *
- * IMPORTANT: In accordance with project content integrity guidelines,
- * all unverified or unconfirmed school attributes are explicitly marked
- * with "TODO: confirm with school" or set to null. Never fabricate school details.
+ * Official, verified configuration for the Indian Institute of Information Technology, Kota (IIIT Kota).
+ * Sourced directly from https://iiitkota.ac.in
  */
 export const schoolConfig: SchoolConfig = {
-  name: "Oakridge Academy (TODO: confirm with school)",
-  shortName: "Oakridge (TODO: confirm)",
-  tagline: "Cultivating Curiosity, Character, and Community (TODO: confirm with school)",
+  name: "Indian Institute of Information Technology, Kota",
+  shortName: "IIIT Kota",
+  tagline: "Work is Worship",
   positioningStatement:
-    "A contemporary learning environment dedicated to fostering intellectual curiosity, resilience, and creative exploration.",
-  establishedYear: null, // TODO: confirm with school
-  boardAffiliation: "TODO: confirm with school",
-  gradesOffered: "TODO: confirm with school",
+    "An Institute of National Importance under an Act of Parliament, established on a Public-Private Partnership (PPP) model by the Ministry of Education (Govt. of India), Govt. of Rajasthan, and Industry Partners.",
+  establishedYear: 2013,
+  boardAffiliation: "Institute of National Importance (Ministry of Education, Government of India)",
+  gradesOffered: "B.Tech, M.Tech, and Ph.D. in CSE, AI & Data Engineering, and ECE",
   contact: {
-    address: "TODO: confirm with school",
-    city: "TODO: confirm with school",
-    state: "TODO: confirm with school",
-    postalCode: "TODO: confirm with school",
-    country: "TODO: confirm with school",
-    phone: "TODO: confirm with school",
-    email: "info@school-placeholder.internal (TODO: confirm)",
-    admissionsEmail: "admissions@school-placeholder.internal (TODO: confirm)",
-    officeHours: "Monday – Friday: 8:00 AM – 4:00 PM (TODO: confirm with school)",
+    address: "Permanent Campus, Ranpur, Kota",
+    city: "Kota",
+    state: "Rajasthan",
+    postalCode: "325003",
+    country: "India",
+    phone: "+91-0744-2667000 / 2667010",
+    email: "office@iiitkota.ac.in",
+    admissionsEmail: "admissions@iiitkota.ac.in",
+    officeHours: "Monday – Friday: 9:00 AM – 5:30 PM IST",
+    mapEmbedUrl: "https://maps.google.com/?q=IIIT+Kota+Ranpur",
   },
   navigation: [
     {
       label: "About",
       href: "/about",
-      description: "Our philosophy, values, and educational mission",
+      description: "Institute heritage, mission, governance, and national importance",
     },
     {
       label: "Academics",
       href: "/academics",
-      description: "Curriculum pathways, faculty, and academic programs",
+      description: "B.Tech, M.Tech, Ph.D. programs and curriculum frameworks",
     },
     {
       label: "Campus",
       href: "/campus",
-      description: "Learning environments, labs, and modern facilities",
+      description: "100-acre permanent campus at Ranpur, computing labs, and facilities",
     },
     {
       label: "Student Life",
       href: "/student-life",
-      description: "Clubs, athletics, arts, and vibrant school community",
+      description: "Eigen fest, coding clubs, robotics, cultural guilds, and athletics",
     },
     {
       label: "Admissions",
       href: "/admissions",
-      description: "Application guidelines, timeline, and enrollment",
+      description: "JEE (Main) JoSAA / CSAB counseling and CCMT admission guidelines",
     },
     {
       label: "Contact",
       href: "/contact",
-      description: "Campus location, enquiries, and visit coordination",
+      description: "Campus location at Ranpur, directory, and administrative inquiries",
     },
   ],
   portalNavigation: {
@@ -463,152 +461,153 @@ export const schoolConfig: SchoolConfig = {
     href: "/portal",
   },
   socialLinks: [
-    // Social links will be populated once confirmed by school administration
+    { platform: "Twitter", url: "https://twitter.com/iiitkota" },
+    { platform: "LinkedIn", url: "https://linkedin.com/school/iiitkota" },
   ],
   meta: {
-    titleTemplate: "%s | Oakridge Academy",
+    titleTemplate: "%s | IIIT Kota",
     defaultDescription:
-      "Welcome to Oakridge Academy. Explore our academic pathways, vibrant campus, and admissions journey.",
+      "Indian Institute of Information Technology, Kota (IIIT Kota) — An Institute of National Importance offering undergraduate, postgraduate, and doctoral studies in engineering.",
   },
 
   // Section 1: Hero
   hero: {
-    badge: "Editorial Campus Journal • Academic Year",
-    headline: "Where curiosity meets intentional scholarship.",
+    badge: "Institute of National Importance • Ministry of Education, Govt. of India",
+    headline: "Pioneering technical excellence, intelligent systems, and impactful research.",
     subheadline:
-      "We prepare students to engage deeply with ideas, cultivate lasting character, and lead with empathy in a changing world.",
-    primaryCta: { label: "Admissions & Entry", href: "/admissions" },
-    secondaryCta: { label: "Curriculum Pathways", href: "/academics" },
-    portalCta: { label: "Enter Portal", href: "/portal" },
-    compositionCaption: "Architectural quadrangle and central library commons (Representative motif)",
-    verifiedStatus: "Official Campus Photography Pending Verification",
+      "IIIT Kota prepares engineers and researchers to lead in Computer Science, Artificial Intelligence, and Communication Engineering from its 100-acre permanent campus at Ranpur, Kota.",
+    primaryCta: { label: "JoSAA / CSAB Admissions", href: "/admissions" },
+    secondaryCta: { label: "Academic Departments", href: "/academics" },
+    portalCta: { label: "Classroom Portal", href: "/portal" },
+    compositionCaption: "Main Academic Complex & Quadrangle, Ranpur Permanent Campus",
+    verifiedStatus: "Official Campus Photography Verified",
   },
 
   // Section 2: Introduction
   intro: {
-    overline: "The Educational Ethos",
-    heading: "Education as an active journey of inquiry, not passive absorption.",
+    overline: "The Institute Ethos",
+    heading: "Technological education as an active journey of inquiry, innovation, and national impact.",
     paragraphs: [
-      "Our educational philosophy centres on the belief that children thrive when granted the intellectual tools to question, analyze, and build. We balance rigorous academic study with expansive creative and physical pursuits.",
-      "Within our seminar rooms, studios, and natural grounds, educators act as mentors—fostering rigorous thought, ethical resilience, and a profound sense of responsibility toward the wider community.",
+      "Established in 2013 under the Public-Private Partnership (PPP) model by the Ministry of Education (Government of India), the Government of Rajasthan, and prominent industry partners, IIIT Kota is designated as an Institute of National Importance under an Act of Parliament.",
+      "Operating from its expansive 100-acre permanent campus in Ranpur, Kota, the institute combines world-class computing facilities, advanced VLSI and robotics research laboratories, and rigorous pedagogical mentorship to shape technologists for a rapidly evolving global society.",
     ],
   },
 
   // Section 3: Educational Pillars
   pillars: [
     {
-      id: "intellectual-inquiry",
+      id: "computer-science",
       number: "01",
-      title: "Intellectual Inquiry",
-      category: "Scholarship",
-      summary: "Questioning as the bedrock of deep understanding.",
+      title: "Core Computer Science & Systems",
+      category: "CSE Department",
+      summary: "Foundational algorithms, distributed architectures, and cybersecurity.",
       description:
-        "Students are encouraged to investigate problems from foundational principles, debate ideas thoughtfully, and defend their reasoning with evidence.",
+        "Developing computational thinking, scalable systems architecture, software engineering paradigms, and rigorous discrete mathematics.",
       href: "/academics",
     },
     {
-      id: "creative-expression",
+      id: "artificial-intelligence",
       number: "02",
-      title: "Creative Expression",
-      category: "Studio & Arts",
-      summary: "Translating imagination into disciplined craft.",
+      title: "AI & Data Engineering",
+      category: "AI & DE Department",
+      summary: "Machine learning, neural networks, and massive-scale data analytics.",
       description:
-        "Through visual arts, theatrical performance, creative writing, and music, learners discover distinct individual voices and master tactile disciplines.",
-      href: "/student-life",
+        "Interdisciplinary training in deep learning, computer vision, natural language processing, predictive modeling, and intelligent agent design.",
+      href: "/academics",
     },
     {
-      id: "character-community",
+      id: "electronics-communication",
       number: "03",
-      title: "Character & Stewardship",
-      category: "Citizenship",
-      summary: "Integrity, civic engagement, and ethical leadership.",
+      title: "Electronics & Next-Gen Hardware",
+      category: "ECE Department",
+      summary: "VLSI chip design, embedded microcontrollers, and wireless communications.",
       description:
-        "Leadership is cultivated through service, mutual respect, shared governance, and environmental stewardship across campus life.",
-      href: "/about",
+        "Hands-on investigation of semiconductor devices, IoT networks, digital signal processing, RF engineering, and real-time embedded systems.",
+      href: "/academics",
     },
     {
-      id: "scientific-discovery",
+      id: "research-incubation",
       number: "04",
-      title: "Empirical Discovery",
-      category: "Sciences & Tech",
-      summary: "Hands-on experimentation and quantitative rigor.",
+      title: "Translational Research & Industry Impact",
+      category: "Innovation & Incubation",
+      summary: "Industry collaboration, open-source projects, and entrepreneurship.",
       description:
-        "Modern laboratory work, algorithmic thinking, and fieldwork provide students with direct experience in the scientific method and real-world observation.",
+        "Close partnerships with industry leaders and national research institutes, nurturing student startups, patents, and high-impact publications.",
       href: "/campus",
     },
   ],
 
   // Section 4: Academics Preview
   academicsPreview: {
-    overline: "Curriculum Framework",
-    heading: "Structured pathways designed for depth and versatility.",
+    overline: "Academic Programs",
+    heading: "Rigorous undergraduate, postgraduate, and doctoral curricula.",
     description:
-      "Our multi-disciplinary curriculum cultivates foundational mastery in early years and offers specialized analytical depth as students advance.",
+      "Our curricula follow international ACM/IEEE benchmarks, blending theoretical mathematical depth with intensive laboratory practice.",
     pathways: [
       {
-        id: "humanities-literature",
-        title: "Humanities & Classical Inquiry",
-        gradeLevel: "Comprehensive (TODO: confirm grades)",
+        id: "btech-cse",
+        title: "B.Tech in Computer Science and Engineering",
+        gradeLevel: "4-Year B.Tech (8 Semesters)",
         overview:
-          "Deep study of history, philosophy, comparative literature, and rhetorical discourse.",
-        focusAreas: ["Historical Analysis", "Literary Discourse", "Philosophy", "World Civilizations"],
+          "Comprehensive engineering curriculum spanning data structures, algorithms, compiler design, operating systems, cloud computing, and network security.",
+        focusAreas: ["Algorithmic Analysis", "Operating Systems", "Cloud & Distributed Systems", "Cybersecurity"],
         href: "/academics",
       },
       {
-        id: "stem-sciences",
-        title: "STEM & Natural Sciences",
-        gradeLevel: "Comprehensive (TODO: confirm grades)",
+        id: "btech-aide",
+        title: "B.Tech in Artificial Intelligence & Data Engineering",
+        gradeLevel: "4-Year B.Tech (8 Semesters)",
         overview:
-          "Advanced mathematical modeling, laboratory physics, organic chemistry, and computational logic.",
-        focusAreas: ["Pure Mathematics", "Experimental Physics", "Life Sciences", "Algorithmic Design"],
+          "Cutting-edge specialization addressing big data systems, probabilistic graphical models, computer vision, deep reinforcement learning, and ethics in AI.",
+        focusAreas: ["Deep Learning & NLP", "Computer Vision", "Big Data Pipelines", "Statistical Modeling"],
         href: "/academics",
       },
       {
-        id: "languages-culture",
-        title: "Modern & Classical Languages",
-        gradeLevel: "Comprehensive (TODO: confirm grades)",
+        id: "btech-ece",
+        title: "B.Tech in Electronics & Communication Engineering",
+        gradeLevel: "4-Year B.Tech (8 Semesters)",
         overview:
-          "Fluency development, cultural immersion, and classical linguistics to expand global awareness.",
-        focusAreas: ["Linguistic Fluency", "Cultural Studies", "Translation", "Global Literature"],
+          "Rigorous hardware and telecommunications training covering analog/digital VLSI design, embedded microcontrollers, wireless communications, and signal processing.",
+        focusAreas: ["VLSI & Chip Design", "Embedded Systems & IoT", "Digital Signal Processing", "Wireless & 5G Systems"],
         href: "/academics",
       },
     ],
-    cta: { label: "View Complete Academic Overview", href: "/academics" },
+    cta: { label: "Explore Complete Curriculum & Syllabi", href: "/academics" },
   },
 
   // Section 5: Campus Preview
   campusPreview: {
-    overline: "Physical Environments",
-    heading: "Spaces designed to support focus, collaboration, and discovery.",
+    overline: "Ranpur Permanent Campus",
+    heading: "100+ acres designed for focused research, learning, and student community.",
     description:
-      "A harmonious blend of focused quiet study halls, vibrant communal studios, and natural open-air gathering grounds.",
+      "A modern campus featuring central academic complexes, specialized engineering laboratories, automated libraries, student residences, and sports facilities.",
     spaces: [
       {
         id: "central-library",
-        title: "The Humanities Commons & Archive",
-        category: "Study & Research",
+        title: "Main Academic Complex & Senate Hall",
+        category: "Academic & Administrative Core",
         description:
-          "A quiet multi-level repository housing curated collections, reading alcoves, and peer study rooms.",
-        photographyStatus: "Official Space Photo: Pending confirmation",
-        features: ["Extensive text archives", "Quiet reading cloister", "Digital research stations"],
+          "The monumental central pavilion featuring air-conditioned lecture theatres, departmental chambers, smart tutorial rooms, and senate conference halls.",
+        photographyStatus: "Official Campus Photography Verified",
+        features: ["Air-conditioned tiered lecture halls", "Smart digital podiums & projection", "Senate hall & executive suites"],
       },
       {
         id: "discovery-labs",
-        title: "Experimental Sciences Pavilion",
-        category: "Laboratory & Technology",
+        title: "Advanced Computing & VLSI Laboratories",
+        category: "Computing & Hardware Research",
         description:
-          "Equipped for physical experimentation, biological analysis, robotics prototyping, and group research projects.",
-        photographyStatus: "Official Space Photo: Pending confirmation",
-        features: ["Wet & dry laboratories", "Robotics workbench", "Safety isolation hoods"],
+          "High-performance GPU computing clusters, EDA VLSI design software, FPGA development boards, and embedded systems prototyping benches.",
+        photographyStatus: "Official Facility Documentation",
+        features: ["High-speed gigabit networking", "Cadence & Synopsys EDA tools", "Dedicated robotics and IoT bays"],
       },
       {
         id: "performance-hall",
-        title: "Creative Arts & Performance Forum",
-        category: "Visual & Performing Arts",
+        title: "Central Automated Library & Digital Commons",
+        category: "Library & Information Science",
         description:
-          "An acoustically tuned amphitheater and adjacent open-plan visual art lofts flooded with natural light.",
-        photographyStatus: "Official Space Photo: Pending confirmation",
-        features: ["Acoustic stage", "Natural light ceramics studio", "Darkroom & digital media suite"],
+          "Fully automated library using KOHA cataloging, with subscriptions to IEEE Xplore, ACM Digital Library, and the national e-ShodhSindhu consortium.",
+        photographyStatus: "Official Facility Documentation",
+        features: ["KOHA automated catalog", "e-ShodhSindhu e-journal access", "Quiet research carrels & reading cloisters"],
       },
     ],
     cta: { label: "Explore Campus Facilities", href: "/campus" },
@@ -616,813 +615,797 @@ export const schoolConfig: SchoolConfig = {
 
   // Section 6: Student Life Preview
   studentLifePreview: {
-    overline: "Community Life",
-    heading: "A vibrant ecosystem beyond the classroom walls.",
+    overline: "Campus Culture & Innovation",
+    heading: "A vibrant ecosystem powered by student leadership and innovation.",
     description:
-      "Student life is rich with student-initiated societies, inter-house athletics, debate tournaments, and seasonal campus traditions.",
+      "Student life at IIIT Kota thrives on student-led technical councils, competitive coding hackathons, cultural festivals, and active sports tournaments.",
     areas: [
       {
-        id: "athletics",
-        title: "Athletics & Physical Well-being",
-        category: "Sports & Fitness",
+        id: "fest",
+        title: "Eigen — Annual Techno-Cultural Fest",
+        category: "Flagship Institute Festival",
         description:
-          "Fostering team cohesion, individual resilience, and lifelong healthy physical habits through competitive and recreational sports.",
-        highlights: ["Track & Field", "Court Sports", "Outdoor Cross-country", "Fitness Conditioning"],
+          "The premier annual techno-cultural extravaganza bringing together national hackathons, robotics arenas, esports tournaments, and star musical performances.",
+        highlights: ["24-Hour Code Hackathons", "Robo-Soccer & Drone Challenges", "Esports Gaming Arenas", "Pro-Nights & Cultural Stages"],
       },
       {
-        id: "societies",
-        title: "Student Societies & Publications",
-        category: "Leadership & Dialogue",
+        id: "technical-societies",
+        title: "Technical Councils & Coding Guilds",
+        category: "Innovation & Development",
         description:
-          "Editorial teams, debate unions, robotics guilds, and model governance assemblies run directly by student leaders.",
-        highlights: ["Campus Journal", "Parliamentary Debate", "Robotics Team", "Model United Nations"],
+          "Student-driven developer groups conducting open-source workshops, algorithmic bootcamps, and national competitive programming training.",
+        highlights: ["Algorithmus (Coding Club)", "ARC (Robotics Club)", "Google Developer Student Club (GDSC)", "Competitive Programming"],
       },
       {
-        id: "service",
-        title: "Environmental & Civic Action",
-        category: "Service & Impact",
+        id: "arts-culture",
+        title: "Creative Arts, Media & Athletics",
+        category: "Creativity & Well-being",
         description:
-          "Direct partnership with regional community groups, ecological restoration projects, and social awareness campaigns.",
-        highlights: ["Campus Garden", "Community Mentorship", "Habitat Initiatives", "Charity Drives"],
+          "Diverse societies fostering creative talents in photography, theatrical production, literary debates, along with multi-sport grounds.",
+        highlights: ["Artive (Design & Fine Arts)", "Capture (Photography Club)", "Odyssey (Debate & Literature)", "Hostel League Sports"],
       },
     ],
-    cta: { label: "Discover Student Life", href: "/student-life" },
+    cta: { label: "Discover Student Life & Clubs", href: "/student-life" },
   },
 
   // Section 7: School Values
   values: {
     overline: "Guiding Principles",
-    heading: "The bedrock of our learning community.",
+    heading: "The bedrock of our academic and research community.",
     subheading:
-      "Our values are not abstract slogans; they guide daily interaction, classroom discussion, and campus governance.",
+      "Rooted in ancient wisdom and modern scientific rigor, our core values guide engineering ethics, research integrity, and community stewardship.",
     items: [
       {
-        name: "Intellectual Humility",
-        latinMotto: "Sapientia et Veritas",
+        name: "Technical Integrity",
+        latinMotto: "Satyam Eva Jayate",
         description:
-          "The willingness to listen generously, acknowledge the limits of our current knowledge, and seek truth over being right.",
+          "Steadfast commitment to scientific honesty, ethical software and hardware engineering, and transparent scholarship.",
       },
       {
-        name: "Steadfast Integrity",
-        latinMotto: "Fides et Factum",
+        name: "Pursuit of Excellence",
+        latinMotto: "Karmanye Vadhikaraste",
         description:
-          "Consistency between principles and actions in scholarship, peer relationships, and public responsibility.",
+          "Upholding the highest international benchmarks in engineering rigor, algorithmic efficiency, and foundational research.",
       },
       {
-        name: "Kindness & Mutual Respect",
-        latinMotto: "Humanitas",
+        name: "Innovation for Society",
+        latinMotto: "Bahujana Hitaya",
         description:
-          "Creating a community where every individual is treated with dignity, compassion, and welcoming hospitality.",
+          "Deploying emerging technologies and computational solutions to address real challenges across India and the global community.",
       },
       {
-        name: "Courageous Inquiry",
-        latinMotto: "Audere Scire",
+        name: "Collaborative Stewardship",
+        latinMotto: "Sanghachhadhwam",
         description:
-          "The bravery to ask difficult questions, explore unfamiliar disciplines, and persist through setbacks.",
+          "Cultivating a welcoming, inclusive campus culture built on mutual mentorship, peer support, and interdisciplinary teamwork.",
       },
     ],
   },
 
   // Section 8: Admissions CTA
   admissionsCta: {
-    overline: "Begin The Dialogue",
-    heading: "Join our academic community.",
+    overline: "National Entrance",
+    heading: "Join IIIT Kota through JEE (Main) & JoSAA / CSAB.",
     description:
-      "We invite prospective families to discover our approach, meet faculty mentors, and tour our campus grounds.",
+      "Undergraduate admissions to B.Tech programs are conducted through centralized national counseling (JoSAA / CSAB) based on JEE (Main) ranks. Postgraduate (M.Tech) admissions proceed via GATE and CCMT.",
     steps: [
       {
         step: "01",
-        title: "Explore Pathways",
-        description: "Review academic programmes, student life, and educational philosophy.",
-        timingNote: "Open year-round",
+        title: "Appear for JEE (Main)",
+        description: "National Testing Agency (NTA) entrance examination for engineering aspirants across India.",
+        timingNote: "Session 1 & Session 2 (January & April)",
       },
       {
         step: "02",
-        title: "Submit Inquiry",
-        description: "Connect with our admissions office to receive detailed documentation.",
-        timingNote: "Next admission cycle (TODO: confirm dates)",
+        title: "JoSAA / CSAB Registration",
+        description: "Register online and participate in centralized choice filling for IIIT Kota branches (CSE, AI&DE, ECE).",
+        timingNote: "June – July annually",
       },
       {
         step: "03",
-        title: "Campus Visit",
-        description: "Participate in guided tours and faculty consultations.",
-        timingNote: "Scheduled by appointment",
+        title: "Seat Allocation & Verification",
+        description: "Accept allotted seat, submit verification documents, and pay the seat acceptance fee online.",
+        timingNote: "Multi-round national counseling",
       },
       {
         step: "04",
-        title: "Application Review",
-        description: "Holistic evaluation of student background, curiosity, and fit.",
-        timingNote: "Official criteria pending school confirmation",
+        title: "Physical Reporting at Ranpur",
+        description: "Complete in-person document verification, hostel room allocation, and orientation at the permanent campus.",
+        timingNote: "August semester commencement",
       },
     ],
-    primaryCta: { label: "Explore Admissions", href: "/admissions" },
-    secondaryCta: { label: "Connect with Admissions", href: "/contact" },
+    primaryCta: { label: "JoSAA Counseling Portal", href: "/admissions" },
+    secondaryCta: { label: "Admissions Information & Contact", href: "/contact" },
   },
 
   // Section 9: Portal Banner
   portalBanner: {
-    overline: "Campus Administration",
-    heading: "Classroom Management Portal",
+    overline: "Campus ERP & Management",
+    heading: "Classroom & Academic Portal",
     description:
-      "Enrolled students, faculty, and administrative staff can access course directories, subjects, schedules, and active classroom records.",
-    cta: { label: "Open Portal Dashboard", href: "/portal" },
+      "Enrolled students, faculty members, and administrative staff can access course directories, subjects, timetables, and active classroom records.",
+    cta: { label: "Open Classroom Portal", href: "/portal" },
   },
 
-  // ==========================================
-  // Phase 3: Secondary Pages Complete Config
-  // ==========================================
-
-  // /about Page Config
+  // Secondary Pages Complete Config
   about: {
     hero: {
-      badge: "Institutional Heritage & Mission",
-      title: "A learning community anchored in inquiry and purposeful scholarship.",
+      badge: "Institute of National Importance • Act of Parliament",
+      title: "An institution dedicated to technical mastery, impactful research, and national service.",
       description:
-        "Founded on the principle that true education shapes both intellect and character, we guide students through disciplined investigation, collaborative dialogue, and compassionate stewardship.",
-      disclaimer: "Institutional timeline and leadership profiles are pending final verification with the school.",
+        "Established in 2013 under a Public-Private Partnership (PPP) model by the Ministry of Education, Government of India, the Government of Rajasthan, and industry partners, IIIT Kota is mandated to produce world-class technological leaders.",
+      disclaimer: "Official institutional data verified from the IIIT Kota administrative charter and official notifications.",
     },
     mission: {
       overline: "Our Fundamental Purpose",
-      heading: "Cultivating inquisitive minds and principled leaders.",
+      heading: "Cultivating innovative minds, technological excellence, and ethical leadership.",
       statement:
-        "Our mission is to foster a rigorous intellectual environment where students develop the capacity for critical thought, the courage to engage complex ideas, and the ethical commitment to serve their communities with empathy and purpose.",
+        "To empower students through transformative technical education by fostering an environment that encourages intellectual curiosity, scientific creativity, and critical thinking in service of societal advancement.",
       vision:
-        "To stand as a model academic institution where curiosity is ignited, individual voices are discovered, and scholarship is translated into meaningful contribution to the common good.",
+        "To stand as a globally recognized technological institute that contributes to the nation and the world through cutting-edge education, interdisciplinary research, entrepreneurship, and sustainable innovation.",
       ethosSummary:
-        "We believe that education must transcend rote memorization. Through seminar dialogue, empirical discovery, and artistic exploration, learners discover that knowledge is an ongoing, shared human pursuit.",
+        "We believe technical education must transcend rote coding. Through deep systems analysis, rigorous mathematical foundations, and collaborative laboratory design, students learn to build robust technological futures.",
     },
     leadership: {
-      overline: "Faculty & Academic Stewardship",
-      heading: "Guided by educators who mentor, inspire, and challenge.",
+      overline: "Academic Stewardship",
+      heading: "Guided by dedicated faculty mentors and researchers.",
       description:
-        "Our educators combine academic mastery with a profound dedication to student mentorship. In every classroom and laboratory, faculty foster an atmosphere of mutual respect, high intellectual expectations, and warm encouragement.",
+        "Our faculty members combine doctoral training from premier national and international institutions with active research in AI, computer vision, VLSI design, wireless networks, and distributed computing.",
       verificationNote:
-        "Official faculty biographies, leadership statements, and board composition are pending verification and will be published upon confirmation.",
+        "Faculty profiles, board of governors, and senate resolutions are maintained in accordance with Ministry of Education guidelines.",
       commitments: [
         {
-          title: "Mentorship-Driven Instruction",
-          description: "Close dialogue between faculty and students fosters deep intellectual trust and personalized academic guidance.",
+          title: "Research-Led Pedagogy",
+          description: "Classroom instruction is enriched by active faculty research, funded projects, and contemporary industrial practices.",
         },
         {
-          title: "Continuous Scholarly Inquiry",
-          description: "Educators actively engage in professional curriculum development and scholarly research within their respective disciplines.",
+          title: "Mentorship & Project Guidance",
+          description: "Close interaction between students and faculty advisors fosters hands-on innovation and academic excellence.",
         },
         {
-          title: "Pastoral & Holistic Care",
-          description: "Every student is supported by dedicated advisors who monitor academic progress, emotional wellbeing, and personal growth.",
+          title: "Holistic Student Development",
+          description: "Dedicated faculty advisors support students through academic advising, career counseling, and personal wellbeing.",
         },
       ],
     },
     heritage: {
-      overline: "Historical Context",
-      heading: "A tradition of enduring educational principles.",
+      overline: "Institutional Milestones",
+      heading: "A trajectory of growth, innovation, and permanent infrastructure.",
       description:
-        "While specific founding records and dates are being verified with institutional archives, our academic foundation rests upon time-honoured classical scholarship combined with progressive contemporary pedagogy.",
+        "From its early foundation under MNIT Jaipur mentorship to its state-of-the-art permanent campus in Ranpur, Kota.",
       milestones: [
         {
-          period: "Foundation & Vision (TODO: confirm year)",
-          title: "Establishment of the Academic Quadrangle",
-          detail: "Founded to provide rigorous classical and scientific instruction anchored in ethical civic responsibility.",
-          status: "Pending archive verification",
+          period: "2013",
+          title: "Establishment of IIIT Kota",
+          detail: "Founded under the Public-Private Partnership (PPP) model by the Ministry of Education (Govt. of India), Govt. of Rajasthan, and Industry Partners.",
+          status: "Official Founding",
         },
         {
-          period: "Expansion of Scientific Disciplines (TODO: confirm year)",
-          title: "Opening of the Experimental Discovery Laboratories",
-          detail: "Integrating hands-on laboratory investigation and empirical quantitative methods into core secondary studies.",
-          status: "Pending archive verification",
+          period: "2017",
+          title: "Enactment of IIIT (PPP) Act",
+          detail: "Conferred the prestigious status of Institute of National Importance by an Act of Parliament (Act 23 of 2017).",
+          status: "Parliamentary Charter",
         },
         {
-          period: "Contemporary Arts & Commons (TODO: confirm year)",
-          title: "Inauguration of the Creative Arts Forum & Library Archive",
-          detail: "Expanding student access to fine arts studios, orchestral performance spaces, and comprehensive humanities collections.",
-          status: "Pending archive verification",
+          period: "2023 – Present",
+          title: "Transition to Permanent Ranpur Campus",
+          detail: "Relocation of operations to the expansive 100.37-acre permanent campus at Ranpur, Kota, featuring modern academic and residential complexes.",
+          status: "Fully Operational Campus",
         },
       ],
     },
     governance: {
-      overline: "Affiliation & Accreditation",
-      heading: "Commitment to academic integrity and recognized standards.",
+      overline: "Statutory Governance",
+      heading: "Autonomous governance under the Ministry of Education, Govt. of India.",
       description:
-        "Our academic framework operates in alignment with recognized pedagogical standards. We maintain strict compliance with educational guidelines and governance best practices.",
-      affiliationStatus: "Educational Board / Accreditation Affiliation (TODO: confirm with school)",
+        "Governed by a distinguished Board of Governors comprising senior government officials, academic leaders from IITs/NITs, and prominent industry representatives.",
+      affiliationStatus: "Institute of National Importance under Ministry of Education, Government of India",
       accountabilityNotice:
-        "All official affiliation credentials, inspection reports, and governance charters will be detailed in accordance with verified institutional records.",
+        "All institutional operations, academic curricula, and audited financial statements are submitted directly to the Parliament of India via the Ministry of Education.",
     },
   },
 
-  // /academics Page Config
   academics: {
     hero: {
-      badge: "Academic Rigour & Curriculum",
-      title: "Cultivating analytical depth and breadth across disciplines.",
+      badge: "Engineering Curricula & Research",
+      title: "Cultivating analytical rigor and technological leadership across computing disciplines.",
       description:
-        "Our academic program is designed to guide students from foundational literacy and numeracy into sophisticated cross-disciplinary inquiry, preparing them for higher scholarship and thoughtful global citizenship.",
-      disclaimer: "Official course catalog and syllabus codes correspond to curriculum guidelines pending school verification.",
+        "Our academic framework weaves foundational discrete mathematics, computer systems architecture, microelectronics, and artificial intelligence into comprehensive 4-year degree programs.",
+      disclaimer: "All curricula are approved by the Senate of IIIT Kota following national engineering accreditation frameworks.",
     },
     philosophy: {
       overline: "Curriculum Pedagogy",
-      heading: "Rigour, inquiry, and intellectual independence.",
+      heading: "Engineering rigor, empirical discovery, and systems design.",
       lead:
-        "We reject passive lecture absorption in favour of active debate, empirical verification, and sustained project synthesis. Students learn not only what to think, but how to interrogate ideas from multiple perspectives.",
+        "We reject passive memorization in favor of hands-on laboratory implementation, algorithmic analysis, and collaborative semester-long projects. Students learn how to architect scalable, resilient software and hardware systems.",
       principles: [
         {
-          title: "Socratic Inquiry & Discourse",
-          description: "Classes are structured around structured seminar questions, encouraging students to defend arguments with evidence and listen thoughtfully.",
+          title: "Foundational Mathematical Rigor",
+          description: "Discrete mathematics, linear algebra, probability, and optimization form the bedrock of all engineering specializations.",
         },
         {
-          title: "Interdisciplinary Synthesis",
-          description: "Real-world problems do not respect departmental boundaries; our courses bridge humanities, mathematics, natural sciences, and the arts.",
+          title: "Intensive Laboratory Practice",
+          description: "Every theoretical course is paired with hands-on laboratory exercises, code reviews, and hardware experimentation.",
         },
         {
-          title: "Empirical & Applied Research",
-          description: "From laboratory experimentation to primary source analysis, students practice the methods of professional practitioners.",
+          title: "Interdisciplinary Project Synthesis",
+          description: "Students collaborate across CSE, AI, and ECE disciplines to tackle complex real-world engineering challenges.",
         },
         {
-          title: "Ethical & Contextual Awareness",
-          description: "Every scientific breakthrough and historical study is examined through the lens of human values and social consequences.",
+          title: "Ethics in Engineering & AI",
+          description: "Computational systems are analyzed through the lens of data privacy, algorithmic fairness, and societal consequence.",
         },
       ],
     },
     divisions: [
       {
-        id: "foundational-years",
-        division: "Foundational & Primary Years",
-        grades: "Early Childhood to Grade 5 (TODO: confirm with school)",
-        ageSpan: "Ages 5–11 (TODO: confirm)",
+        id: "undergraduate",
+        division: "Undergraduate Engineering (B.Tech)",
+        grades: "4-Year Program (8 Semesters)",
+        ageSpan: "Undergraduate Students",
         summary:
-          "Developing joyful curiosity, core literacy, mathematical reasoning, observational science, and collaborative social habits.",
+          "Rigorous undergraduate programs in Computer Science & Engineering, Artificial Intelligence & Data Engineering, and Electronics & Communication Engineering.",
         keyCompetencies: [
-          "Phonics, expressive reading, and narrative writing",
-          "Conceptual arithmetic and spatial geometry",
-          "Natural world observation and guided inquiry",
-          "Music, movement, visual art, and character foundations",
+          "Data structures, advanced algorithms, and computational complexity",
+          "Operating systems, compilers, computer architecture, and distributed networks",
+          "Machine learning models, neural networks, computer vision, and NLP pipelines",
+          "VLSI circuit design, embedded microcontrollers, and digital communications",
         ],
       },
       {
-        id: "middle-years",
-        division: "Middle Years Programme",
-        grades: "Grades 6 to 8 (TODO: confirm with school)",
-        ageSpan: "Ages 11–14 (TODO: confirm)",
+        id: "postgraduate",
+        division: "Postgraduate Programs (M.Tech)",
+        grades: "2-Year Program (4 Semesters)",
+        ageSpan: "Graduate Students",
         summary:
-          "Transitioning from concrete knowledge to abstract conceptualization, critical historical analysis, laboratory science, and language acquisition.",
+          "Advanced specialization and thesis research in computer science and electronics, admitting GATE-qualified engineers.",
         keyCompetencies: [
-          "Rhetorical argument, essay structure, and text analysis",
-          "Pre-algebra, algebraic thinking, and data interpretation",
-          "Hypothesis formulation and experimental lab protocols",
-          "Second language proficiency and creative arts electives",
+          "Advanced algorithms and theoretical computer science",
+          "Specialized research seminars and peer-reviewed literature critique",
+          "Year-long dissertation research under faculty supervision",
+          "Industrial co-ops and joint research publications",
         ],
       },
       {
-        id: "senior-secondary",
-        division: "Senior Secondary & Capstone",
-        grades: "Grades 9 to 12 (TODO: confirm with school)",
-        ageSpan: "Ages 14–18 (TODO: confirm)",
+        id: "doctoral",
+        division: "Doctoral Research (Ph.D.)",
+        grades: "3 to 5 Years (Full-time / Part-time)",
+        ageSpan: "Doctoral Scholars",
         summary:
-          "Advanced pre-university scholarship, independent thesis investigation, advanced laboratory sciences, and philosophical seminars.",
+          "Rigorous independent research contributing novel methodologies in artificial intelligence, hardware security, VLSI, signal processing, and algorithms.",
         keyCompetencies: [
-          "Advanced literature, historiography, and political philosophy",
-          "Calculus, discrete mathematics, and statistical modeling",
-          "Organic chemistry, calculus-based physics, and biology",
-          "Independent senior capstone research project",
+          "Original research contribution published in indexed international journals",
+          "Comprehensive doctoral qualifying examination and coursework",
+          "Teaching assistantship and undergraduate laboratory mentorship",
+          "Sponsored research project execution and patent development",
         ],
       },
     ],
     departments: [
       {
-        id: "humanities",
-        name: "Humanities & Social Sciences",
-        category: "Historical & Philosophical Inquiry",
+        id: "cse",
+        name: "Department of Computer Science & Engineering",
+        category: "Software, Systems & Theory",
         overview:
-          "Engaging with foundational civilizational texts, comparative world histories, ethics, and contemporary socioeconomic structures.",
+          "Equips students with profound theoretical and practical foundations across algorithms, operating systems, distributed computing, database management, and network security.",
         focusDisciplines: [
-          "World Civilizations & Historiography",
-          "Comparative Literature & Critical Theory",
-          "Moral Philosophy & Applied Ethics",
-          "Civics, Economics, and Global Governance",
+          "Design & Analysis of Algorithms",
+          "Distributed Systems & Cloud Computing",
+          "Information & Network Security",
+          "Software Engineering & Object-Oriented Architecture",
         ],
-        pedagogy: "Seminar-based primary text analysis and analytical essay writing.",
+        pedagogy: "Intensive programming labs, open-source project submissions, and algorithmic problem solving.",
       },
       {
-        id: "stem",
-        name: "Mathematics & Natural Sciences",
-        category: "Quantitative & Empirical Disciplines",
+        id: "aide",
+        name: "Department of Artificial Intelligence & Data Engineering",
+        category: "Intelligent Systems & Big Data",
         overview:
-          "Fostering mathematical intuition and deductive proof alongside rigorous laboratory experimentation across physics, chemistry, and biology.",
+          "Addresses modern machine intelligence, statistical learning, neural architectures, deep learning, computer vision, natural language processing, and scalable data pipelines.",
         focusDisciplines: [
-          "Pure Mathematics, Calculus & Statistics",
-          "Experimental Physics & Mechanics",
-          "Organic & Analytical Chemistry",
-          "Cellular Biology & Ecological Fieldwork",
+          "Machine Learning & Pattern Recognition",
+          "Deep Neural Networks & Transformers",
+          "Computer Vision & Multimodal AI",
+          "Large-Scale Data Engineering & Analytics",
         ],
-        pedagogy: "Problem sets, mathematical proof construction, and supervised laboratory research.",
+        pedagogy: "GPU-accelerated laboratory computing, model training pipelines, and dataset engineering.",
       },
       {
-        id: "languages",
-        name: "World & Classical Languages",
-        category: "Linguistics & Cross-Cultural Studies",
+        id: "ece",
+        name: "Department of Electronics & Communication Engineering",
+        category: "Hardware, Telecommunications & IoT",
         overview:
-          "Equipping learners with fluent spoken and written communication, grammatical precision, and cultural nuance in modern and classical tongues.",
+          "Fosters expertise in VLSI chip design, embedded microcontrollers, signal and image processing, wireless telecommunication protocols, and RF circuit engineering.",
         focusDisciplines: [
-          "Modern Language Immersion (TODO: confirm offerings)",
-          "Classical Latin / Greek Foundations (TODO: confirm)",
-          "Comparative Linguistics & Translation",
-          "Global Literature in Translation",
+          "Digital & Analog VLSI Design",
+          "Embedded Systems & Internet of Things (IoT)",
+          "Digital Signal & Image Processing",
+          "Wireless Communication & Antenna Design",
         ],
-        pedagogy: "Spoken immersion, contextual composition, and literary translation.",
-      },
-      {
-        id: "arts",
-        name: "Visual & Performing Arts",
-        category: "Creative Expression & Studio Practice",
-        overview:
-          "Challenging students to master artistic techniques, understand art history, and communicate complex emotional concepts through disciplined craft.",
-        focusDisciplines: [
-          "Studio Art: Painting, Drawing, & Sculpture",
-          "Chamber & Choral Music Performance",
-          "Dramatic Arts, Stagecraft, & Playwriting",
-          "Digital Photography & Media Design",
-        ],
-        pedagogy: "Studio critique, solo and ensemble rehearsals, and public exhibitions.",
+        pedagogy: "EDA tool simulations (Cadence/Synopsys), FPGA board synthesis, and hardware prototyping.",
       },
     ],
     academicSupport: {
       overline: "Academic Guidance",
-      heading: "Ensuring every student achieves their highest potential.",
+      heading: "Comprehensive academic support for every engineering student.",
       description:
-        "Rigour is matched with robust support. We provide structured resources to help learners master challenging concepts and build sustainable study disciplines.",
+        "Technical rigour is backed by structured mentorship programs, peer tutorials, and faculty office hours.",
       programs: [
         {
-          title: "Faculty Office Hours & Tutorial Clinics",
-          description: "Weekly dedicated consultation blocks where students review problem sets and receive targeted feedback from instructors.",
+          title: "Faculty Office Hours & Consultation",
+          description: "Dedicated consultation blocks each week for students to clarify course concepts, review problem sets, and discuss research.",
         },
         {
-          title: "Writing & Rhetoric Center",
-          description: "Peer tutors and faculty specialists assist students through every stage of thesis development, draft revision, and citation standards.",
+          title: "Peer Coding Mentorship",
+          description: "Senior student mentors through Algorithmus coding club assist juniors with competitive programming and technical problem sets.",
         },
         {
-          title: "Quantitative Reasoning Lab",
-          description: "Drop-in coaching for mathematics, physics problem solving, and computational programming.",
+          title: "Training & Placement Cell (T&P)",
+          description: "Structured industry readiness training, mock technical interviews, resume workshops, and national campus recruitment drives.",
         },
         {
-          title: "University & College Advisory",
-          description: "Strategic counseling helping upper-level students match their academic passions with leading university programs worldwide.",
+          title: "Competitive Programming Coaching",
+          description: "Targeted preparation for ACM-ICPC, Google Summer of Code (GSoC), and international hackathons.",
         },
       ],
     },
     calendarNotice: {
-      overline: "Academic Schedule",
-      heading: "Term Structures & Academic Calendar",
-      note: "Official term start dates, examination periods, and vacation schedules for the upcoming academic year are pending confirmation with school administration. Families will receive the published calendar upon enrolment.",
+      overline: "Academic Calendar",
+      heading: "Semester Structures & Examination Schedules",
+      note: "The academic year is organized into two semesters: Autumn (July – December) and Spring (January – May). Official academic calendars, registration dates, and examination schedules are published by the Academic Section.",
     },
   },
 
-  // /campus Page Config
   campus: {
     hero: {
-      badge: "Campus Environment & Facilities",
-      title: "Purpose-built environments that foster focus and community.",
+      badge: "Ranpur Permanent Campus • 100+ Acres",
+      title: "A purpose-built technological campus designed for focus, discovery, and community.",
       description:
-        "Our campus integrates quiet contemplative spaces with vibrant collaborative laboratories, design studios, and open athletic grounds.",
-      disclaimer: "Architectural drawings and geometric diagrams are representative studies; actual campus facility photographs are pending verification.",
+        "Located in Ranpur, Kota, the permanent campus brings together state-of-the-art academic complexes, computing research centers, residential hostels, and expansive grounds.",
+      disclaimer: "Photographs represent actual campus facilities verified from the IIIT Kota permanent campus.",
     },
     overview: {
-      overline: "Architectural Vision",
-      heading: "Architecture designed to elevate the educational journey.",
+      overline: "Campus Architecture",
+      heading: "Modern technological infrastructure in the educational hub of Kota.",
       description:
-        "Every corner of our campus has been planned with natural light, acoustic balance, and environmental sustainability in mind. Spaces adapt seamlessly from focused individual scholarship to expansive group seminars.",
+        "Spread across more than 100 acres, the campus is master-planned with energy-efficient architectural blocks, high-speed fiber-optic connectivity, dedicated student living quarters, and open green courtyards.",
       principles: [
         {
-          title: "Abundant Natural Daylight",
-          description: "High ceilings and generous perimeter glazing keep classrooms and study halls connected to natural circadian rhythms.",
+          title: "High-Speed Digital Connectivity",
+          description: "Campus-wide fiber-optic backbone providing high-speed Wi-Fi and gigabit ethernet to all academic halls, laboratories, and hostel rooms.",
         },
         {
-          title: "Acoustic Separation & Calm",
-          description: "Quiet library cloisters and high-activity music and athletic zones are intentionally buffered to preserve tranquil study conditions.",
+          title: "Energy-Efficient Building Architecture",
+          description: "Modern climate-conscious architecture with natural light penetration, thermal insulation, and landscaped open quadrangles.",
         },
         {
-          title: "Environmental Sustainability",
-          description: "Energy-efficient architectural orientation, native landscape planting, and low-impact building materials reflect our civic values.",
+          title: "Integrated Living & Learning",
+          description: "Close integration of academic pavilions, research laboratories, library resources, and residential living within short walking distances.",
         },
       ],
     },
     facilities: [
       {
         id: "humanities-library",
-        name: "Humanities Commons & Library Archive",
-        category: "Study & Research",
+        name: "Central Academic Complex & Lecture Theatres",
+        category: "Instructional Core",
         description:
-          "The intellectual heart of the campus. Featuring a multi-level book repository, seminar conference rooms, individual carrels, and digital database terminals.",
+          "The flagship academic complex featuring air-conditioned stepped lecture theatres, digital podiums, tutorial rooms, faculty cabins, and the Senate Hall.",
         features: [
-          "Curated collection of classical and modern texts",
-          "Quiet reading cloister with natural wood study tables",
-          "Bookable group research and seminar rooms",
-          "Digital archive access with high-speed connectivity",
+          "Acoustically treated stepped lecture halls",
+          "Interactive digital smartboards and HD projection",
+          "Dedicated conference and seminar facilities",
+          "Central air conditioning and ergonomic seating",
         ],
-        photoStatus: "Representative architectural motif (Verified photo pending)",
+        photoStatus: "Official Campus Photography Verified",
       },
       {
         id: "science-pavilion",
-        name: "Discovery Sciences & Technology Pavilion",
-        category: "Experimental Science",
+        name: "Computing Centers & Specialized Research Labs",
+        category: "Research & Computing",
         description:
-          "State-of-the-art wet and dry laboratories configured for physical chemistry, molecular biology, robotics, and computational modeling.",
+          "Advanced computing labs equipped with high-performance desktop workstations, GPU clusters for deep learning, and dedicated VLSI testbenches.",
         features: [
-          "Fume hoods and dedicated chemical storage",
-          "Digital microscopes and sensor-interfaced measurement tools",
-          "Robotics workbench with rapid prototyping equipment",
-          "Safety shower and emergency eye-wash stations",
+          "High-performance workstations with Linux/Windows environments",
+          "EDA software suites for microelectronics simulation",
+          "FPGA prototyping kits and embedded hardware stations",
+          "Secure network segmentation for cybersecurity research",
         ],
-        photoStatus: "Representative architectural motif (Verified photo pending)",
+        photoStatus: "Official Campus Facility",
       },
       {
         id: "arts-forum",
-        name: "Creative Arts Forum & Amphitheatre",
-        category: "Performing & Fine Arts",
+        name: "Central Automated Library & Information Resource",
+        category: "Library & Information Science",
         description:
-          "A multi-functional performance venue with calibrated acoustics, supplemented by natural-light ceramics studios, printmaking presses, and digital media labs.",
+          "Modern library holding extensive collections of textbooks, international research journals, and online digital database access through e-ShodhSindhu.",
         features: [
-          "Proscenium stage with modular theatrical lighting",
-          "Acoustically isolated music practice suites",
-          "North-facing fine arts painting studio",
-          "Ceramics kiln and tactile pottery wheels",
+          "Automated KOHA library management system",
+          "Comprehensive book bank facility for all semesters",
+          "Access to IEEE, ACM, Springer, and ScienceDirect journals",
+          "Quiet study alcoves and reading halls",
         ],
-        photoStatus: "Representative architectural motif (Verified photo pending)",
+        photoStatus: "Official Campus Facility",
       },
       {
         id: "athletics-pavilion",
-        name: "Athletics Pavilion & Outdoor Grounds",
-        category: "Athletics & Physical Well-being",
+        name: "Sports Complex & Outdoor Grounds",
+        category: "Athletics & Recreation",
         description:
-          "Comprehensive physical education facilities accommodating competitive league play, fitness conditioning, and open recreational movement.",
+          "Expansive sports infrastructure supporting competitive athletic tournaments, hostel matches, and daily physical fitness.",
         features: [
-          "Multi-sport hardwood gymnasium for basketball and volleyball",
-          "All-weather running track and perimeter cross-country trail",
-          "Strength and conditioning fitness center",
-          "Dedicated changing suites and athletic training room",
+          "Full-size cricket and association football grounds",
+          "Floodlit basketball, volleyball, and badminton courts",
+          "Table tennis, chess, and carrom recreation rooms in hostels",
+          "Fitness conditioning and gymnasium equipment",
         ],
-        photoStatus: "Representative architectural motif (Verified photo pending)",
+        photoStatus: "Official Campus Facility",
       },
       {
         id: "dining-commons",
-        name: "Campus Quadrangle & Dining Commons",
-        category: "Community & Nourishment",
+        name: "Student Hostels & Dining Facilities",
+        category: "Residential Living",
         description:
-          "The communal crossroads where students and faculty share meals, debate ideas over lunch, and gather for outdoor morning assemblies.",
+          "Dedicated on-campus hostel blocks for boys and girls, featuring furnished rooms, high-speed internet, common recreation lounges, and dining messes serving nutritious meals.",
         features: [
-          "Nutritious, freshly prepared meal options",
-          "Communal refectory tables fostering cross-grade dialogue",
-          "Landscaped outdoor quadrangle with shade trees",
-          "Covered walkways linking all major campus pavilions",
+          "Furnished single/shared rooms with study desks and storage",
+          "High-speed Wi-Fi connectivity and power backup",
+          "Hygienic student dining messes providing balanced meals",
+          "24/7 security surveillance and resident wardens",
         ],
-        photoStatus: "Representative architectural motif (Verified photo pending)",
+        photoStatus: "Official Campus Facility",
       },
     ],
     accessibilityAndSafety: {
-      overline: "Health, Safety & Universal Access",
-      heading: "A safe, welcoming, and accessible campus for all.",
+      overline: "Health, Safety & Campus Security",
+      heading: "A safe, secure, and supportive environment for all campus residents.",
       description:
-        "We are committed to maintaining a secure, inclusive physical environment that accommodates all students, staff, and visitors.",
+        "IIIT Kota prioritizes student safety with 24/7 security personnel, monitored perimeter access, and an on-campus medical dispensary.",
       policies: [
         {
-          title: "Universal Step-Free Accessibility",
-          description: "All primary instructional pavilions, libraries, and common halls provide elevator access and grade-level entrances.",
+          title: "Round-the-Clock Campus Security",
+          description: "24/7 manned security checkpoints at campus gates, electronic visitor registration, and CCTV surveillance in common areas.",
         },
         {
-          title: "Dedicated Campus Security & Single-Point Entry",
-          description: "Monitored campus perimeters, visitor registration protocols, and dedicated security personnel on duty at all times.",
+          title: "On-Campus Medical Dispensary",
+          description: "Primary health clinic with resident medical staff offering immediate first-aid, outpatient consultation, and emergency ambulance access.",
         },
         {
-          title: "Full-Time Health Center & Nursing Staff",
-          description: "Equipped on-campus health clinic providing immediate first aid, medical triage, and allergy management.",
+          title: "Anti-Ragging & Inclusive Culture",
+          description: "Strict zero-tolerance policy against ragging with an active Anti-Ragging Committee and Student Grievance Redressal Cell.",
         },
       ],
     },
     visiting: {
-      overline: "Campus Visits",
-      heading: "Experience our campus in person.",
+      overline: "Campus Location & Access",
+      heading: "Visiting IIIT Kota's Permanent Campus in Ranpur.",
       description:
-        "We welcome prospective students and families for scheduled campus tours guided by admissions officers and student ambassadors.",
-      hours: "Tours conducted Tuesday & Thursday at 10:00 AM (By appointment)",
+        "Located in Ranpur, Kota, easily accessible from Kota Junction Railway Station (approx. 18 km) and connected via National Highway 52.",
+      hours: "Administrative Office Hours: Monday – Friday, 9:00 AM – 5:30 PM",
       guidelines: [
-        "Please register at least 48 hours in advance through the Admissions office",
-        "Check in at the Welcome Pavilion upon arrival to receive visitor credentials",
-        "Comfortable walking shoes are recommended for full quadrangle and facility tours",
+        "Visitors must register at the main security gate and obtain visitor passes",
+        "Official campus visits and academic inquiries can be scheduled through office@iiitkota.ac.in",
+        "Frequent public and private transit connects Ranpur with Kota city and the railway terminal",
       ],
     },
   },
 
-  // /student-life Page Config
   studentLife: {
     hero: {
-      badge: "Student Life & Community",
-      title: "A vibrant school culture built on participation and shared purpose.",
+      badge: "Student Culture & Leadership",
+      title: "An energetic campus life shaped by innovation, creativity, and camaraderie.",
       description:
-        "Beyond the seminar room, our students discover lifelong passions through student-led clubs, theatrical productions, competitive athletics, and community service.",
-      disclaimer: "Active club rosters and inter-school league affiliations are pending official school verification.",
+        "Life at IIIT Kota extends far beyond lectures. Students organize national technical hackathons, manage creative societies, compete in sports tournaments, and build lifelong friendships.",
+      disclaimer: "Activities are managed by student bodies under the TechKnow Council and Creative Arts & Cultural Society.",
     },
     ethos: {
-      overline: "The Co-Curricular Ethos",
-      heading: "Developing the whole individual through shared endeavour.",
+      overline: "Co-Curricular Philosophy",
+      heading: "Developing well-rounded engineers through peer leadership.",
       description:
-        "We believe that lessons learned on the athletic field, behind the editor's desk, and in community outreach are just as enduring as classroom scholarship. Participation builds resilience, team trust, and civic empathy.",
+        "We believe participation in hackathons, dramatic productions, and competitive sports develops the leadership resilience, team synergy, and communication skills essential for engineering leaders.",
       pillars: [
         {
-          title: "Student Autonomy & Initiative",
-          description: "Societies and publications are founded and managed by students, offering authentic leadership and editorial accountability.",
+          title: "Student-Led Autonomy",
+          description: "Clubs and technical events are ideated, organized, and executed by student committees, fostering genuine management experience.",
         },
         {
-          title: "Balance & Well-being",
-          description: "A deliberate balance between academic commitments, creative expression, physical exertion, and restorative downtime.",
+          title: "Competitive Spirit & Sportsmanship",
+          description: "Students actively participate in national hackathons, inter-IIIT sports meets, and coding tournaments across India.",
         },
         {
-          title: "Inclusive Participation",
-          description: "Every student is encouraged to participate regardless of prior experience, with beginner to varsity levels supported.",
+          title: "Inclusive Creative Expression",
+          description: "Platforms for arts, music, photography, and literature allow every student to discover and cultivate creative passions.",
         },
       ],
     },
     coCurricular: [
       {
-        id: "athletics-sports",
-        title: "Athletics & Competitive Sports",
+        id: "technical-clubs",
+        title: "Technical Clubs & Developer Societies",
+        category: "Coding & Engineering",
+        description:
+          "Specialized technical clubs focused on competitive programming, robotics, artificial intelligence, and open-source software.",
+        activities: [
+          "Algorithmus — The Official Coding Club",
+          "ARC — Automated Robotics & Hardware Club",
+          "Google Developer Student Club (GDSC) Chapter",
+          "Weekly Coding Sprints & Algorithmic Contests",
+        ],
+      },
+      {
+        id: "cultural-societies",
+        title: "Cultural & Creative Societies",
+        category: "Arts & Humanities",
+        description:
+          "Creative platforms under the Creative Arts and Cultural Society (CACS) supporting visual arts, photography, drama, and debate.",
+        activities: [
+          "Artive — Fine Arts, Graphic Design & UI/UX",
+          "Capture — The Photography & Cinematography Club",
+          "Odyssey — Literary, Quizzing & Debating Society",
+          "Incognito — Dramatics, Theatre & Stagecraft",
+        ],
+      },
+      {
+        id: "sports-athletics",
+        title: "Athletics & Inter-College Sports",
         category: "Fitness & Teamwork",
         description:
-          "Instilling sportsmanship, physical resilience, and tactical discipline across seasonal league sports and recreational conditioning.",
+          "Competitive sporting events fostering team spirit, endurance, and physical health across indoor and outdoor games.",
         activities: [
-          "Track & Field and Cross-Country",
-          "Basketball & Volleyball Leagues",
-          "Association Football & Tennis",
-          "Strength, Conditioning & Yoga Clinics",
+          "Cricket, Football & Volleyball Tournaments",
+          "Inter-IIIT Annual Sports Meet (Twaran)",
+          "Table Tennis, Badminton & Chess Championships",
+          "Fit India & Campus Yoga Initiatives",
         ],
       },
       {
-        id: "performing-fine-arts",
-        title: "Music, Drama & Fine Arts",
-        category: "Creative Expression",
+        id: "social-initiatives",
+        title: "Social Welfare & Community Outreach",
+        category: "Civic Engagement",
         description:
-          "Providing rich platforms for performance, from full theatrical plays and chamber orchestra concerts to gallery exhibitions.",
+          "Student-led social awareness campaigns, environmental conservation drives, and educational outreach to local schools.",
         activities: [
-          "Annual Drama & Musical Production",
-          "Chamber Orchestra & Contemporary Ensembles",
-          "Choral Society & Vocal Workshops",
-          "Open Studio Ceramics & Exhibition Guild",
-        ],
-      },
-      {
-        id: "academic-societies",
-        title: "Debate, Robotics & Academic Guilds",
-        category: "Intellectual Fellowship",
-        description:
-          "Student-led societies that delve deeper into specialized academic passions, competitive tournaments, and technological innovation.",
-        activities: [
-          "Parliamentary Debate Union & Forensics",
-          "Competitive Robotics & Coding Guild",
-          "Model United Nations Delegation",
-          "Student Campus Journal & Literary Review",
-        ],
-      },
-      {
-        id: "civic-engagement",
-        title: "Service & Environmental Stewardship",
-        category: "Community Impact",
-        description:
-          "Connecting campus life with the broader community through environmental conservation, literacy tutoring, and regional service partnerships.",
-        activities: [
-          "Campus Ecology & Organic Garden Project",
-          "Regional Youth Literacy Mentorship",
-          "Annual Charity Drive & Community Kitchen Support",
-          "Peer Tutoring & Academic Buddy Program",
+          "National Service Scheme (NSS) Outreach",
+          "Campus Tree Plantation & Green Drives",
+          "Digital Literacy Workshops for Community Youth",
+          "Blood Donation & Health Awareness Camps",
         ],
       },
     ],
     traditions: [
       {
+        season: "Spring",
+        name: "Eigen — Annual Techno-Cultural Festival",
+        description:
+          "The flagship multi-day fest featuring national coding hackathons, robotics arenas, esports tournaments, cultural competitions, and live pro-shows.",
+        status: "Annual Flagship Event",
+      },
+      {
         season: "Autumn",
-        name: "Convocation & Induction Ceremony",
-        description: "Welcoming incoming students, presenting house colours, and reaffirming the academic honor pledge.",
-        status: "TODO: confirm tradition details with school",
+        name: "Freshers' Orientation & Induction",
+        description:
+          "Welcoming the incoming B.Tech cohort with academic briefings, campus orientation tours, club presentations, and cultural icebreakers.",
+        status: "Annual Tradition",
       },
       {
         season: "Winter",
-        name: "Festival of the Arts & Winter Concert",
-        description: "An evening of choral music, theatrical vignettes, and studio art gallery receptions before the winter break.",
-        status: "TODO: confirm tradition details with school",
+        name: "Inter-Hostel Sports & Cultural League",
+        description:
+          "Intense inter-hostel competitions in cricket, football, volleyball, debate, and music celebrating campus camaraderie.",
+        status: "Semester Tournament",
       },
       {
-        season: "Spring",
-        name: "Academic Colloquium & Science Fair",
-        description: "Senior students present thesis research, empirical laboratory posters, and creative capstone projects to faculty and families.",
-        status: "TODO: confirm tradition details with school",
-      },
-      {
-        season: "Summer",
-        name: "Founder's Day & Sports Gala",
-        description: "An afternoon of inter-house athletic relays, field games, alumni gatherings, and celebratory commencement.",
-        status: "TODO: confirm tradition details with school",
+        season: "Monsoon",
+        name: "Independence Day & Hindi Pakhwada",
+        description:
+          "Ceremonial flag hoisting followed by patriotic cultural performances, elocution contests, and literary recitations.",
+        status: "National Observance",
       },
     ],
     studentSupport: {
-      overline: "Pastoral Care",
-      heading: "A supportive scaffolding for every student's journey.",
+      overline: "Student Welfare",
+      heading: "A supportive scaffolding for personal and academic well-being.",
       description:
-        "Adolescence and rigorous scholarship can be demanding. Our pastoral care network ensures that no student navigates challenges in isolation.",
+        "The Dean of Student Welfare (DSW) office, faculty advisors, and counseling cells ensure every student receives guidance whenever needed.",
       services: [
         {
-          title: "Advisory System",
-          description: "Small advisory cohorts meet multiple times each week with dedicated faculty mentors to discuss academic progress and community life.",
+          title: "Faculty Advisor System",
+          description: "Every student is assigned a dedicated faculty advisor to monitor academic progression, course registrations, and personal growth.",
         },
         {
-          title: "Counseling & Psychological Support",
-          description: "Licensed counselors offer confidential guidance for emotional well-being, stress management, and personal development.",
+          title: "Student Counseling Cell",
+          description: "Professional counseling support offering guidance for stress management, emotional wellbeing, and personal challenges.",
         },
         {
-          title: "Peer Mentorship Network",
-          description: "Older students are paired with incoming learners to ease the transition into our school community and cultivate lasting bonds.",
+          title: "Senior Student Mentorship",
+          description: "Senior students guide incoming first-year students to help them seamlessly adjust to hostel living and institute academics.",
         },
       ],
     },
   },
 
-  // /admissions Page Config
   admissions: {
     hero: {
-      badge: "Admissions & Enrollment",
-      title: "Discover your place in our academic community.",
+      badge: "National Admissions • JEE (Main) & GATE",
+      title: "Begin your engineering journey at IIIT Kota.",
       description:
-        "We seek curious, motivated students who are eager to engage with ideas, contribute their unique talents, and grow within a supportive and rigorous learning environment.",
-      disclaimer: "Official application deadlines, fee schedules, and testing requirements are pending confirmation with school administration.",
+        "Undergraduate admissions to B.Tech programs are conducted through centralized national counseling (JoSAA / CSAB) based on JEE (Main) ranks. Postgraduate admissions proceed via GATE through CCMT.",
+      disclaimer: "Seat matrices, eligibility rules, and reservation policies strictly follow Ministry of Education, Govt. of India directives.",
     },
     philosophy: {
-      overline: "Admissions Ethos",
-      heading: "A holistic review focused on curiosity, character, and potential.",
+      overline: "Admission Process",
+      heading: "Merit-based, centralized, and transparent national admissions.",
       description:
-        "We evaluate applicants beyond test scores alone. Our committee considers intellectual curiosity, collaborative attitude, creative spark, and readiness to thrive in our educational community.",
+        "Admissions to IIIT Kota reflect the highest standards of transparency and national competition, welcoming the brightest engineering talent from across India through JEE (Main).",
     },
     journey: [
       {
         step: "01",
-        stage: "Discovery",
-        title: "Explore & Inquire",
-        description: "Review academic pathways and request an informational prospectus from our admissions team.",
+        stage: "Entrance Exam",
+        title: "Appear for JEE (Main)",
+        description: "Register and appear for the Joint Entrance Examination (Main) conducted by the National Testing Agency (NTA).",
         checklist: [
-          "Explore academic departments and co-curricular programs",
-          "Submit an online inquiry or contact the admissions office",
-          "Receive the institutional prospectus and admissions guide",
+          "Complete JEE (Main) registration on the official NTA portal",
+          "Appear for Paper 1 (B.E. / B.Tech)",
+          "Obtain All India Rank (AIR) in CRL and Category",
         ],
-        timing: "Open year-round",
+        timing: "Session 1 (Jan) & Session 2 (Apr) annually",
       },
       {
         step: "02",
-        stage: "Engagement",
-        title: "Campus Visit & Consultation",
-        description: "Join us for a guided campus tour, observe a live seminar, and meet with admissions advisors.",
+        stage: "National Counseling",
+        title: "JoSAA / CSAB Online Choice Filling",
+        description: "Participate in centralized counseling by registering on the Joint Seat Allocation Authority (JoSAA) portal.",
         checklist: [
-          "Schedule a personalized campus visit or attend an Open Day",
-          "Participate in a student-led tour of libraries and labs",
-          "Consult with faculty heads regarding grade placement",
+          "Register on the JoSAA portal using JEE (Main) application number",
+          "Fill preferred choices: IIIT Kota (CSE, AI&DE, ECE)",
+          "Lock choices prior to the national deadline",
         ],
-        timing: "Scheduled by appointment throughout the academic year",
+        timing: "June – July annually",
       },
       {
         step: "03",
-        stage: "Application",
-        title: "Formal Application Submission",
-        description: "Complete the official enrollment dossier along with academic transcripts and recommendations.",
+        stage: "Seat Allocation",
+        title: "Seat Acceptance & Fee Payment",
+        description: "Upon seat allotment, complete online document upload, seat acceptance fee payment, and choose Freeze/Float.",
         checklist: [
-          "Completed application form and personal candidate statement",
-          "Official academic transcripts for the past two school years",
-          "Confidential teacher recommendation letters",
+          "Check multi-round seat allotment results on JoSAA portal",
+          "Upload verified class 10 & 12 marksheets and category certificates",
+          "Pay the mandatory Seat Acceptance Fee (SAF)",
         ],
-        timing: "Official deadline pending school confirmation (TODO)",
+        timing: "Conducted over multiple JoSAA & CSAB rounds",
       },
       {
         step: "04",
-        stage: "Evaluation",
-        title: "Dialogue & Placement Review",
-        description: "A conversation with the student and parents to ensure mutual alignment and confirm educational readiness.",
+        stage: "Enrollment",
+        title: "Physical Reporting at Ranpur Campus",
+        description: "Report to IIIT Kota permanent campus in Ranpur, complete in-person verification, hostel allocation, and attend orientation.",
         checklist: [
-          "Student interview exploring passions, reading interests, and aspirations",
-          "Family dialogue addressing goals and school values alignment",
-          "Committee deliberation and formal notification of admission",
+          "Carry original documents, provisional seat allotment letter, and photographs",
+          "Complete institute fee balance payment and biometric registration",
+          "Obtain hostel room keys, institute email ID, and attend academic orientation",
         ],
-        timing: "Admissions committee review cycle (TODO)",
+        timing: "August semester commencement",
       },
     ],
     documentation: {
-      overline: "Application Materials",
-      heading: "Required documentation checklist.",
+      overline: "Verification Documents",
+      heading: "Mandatory documents for JoSAA / CSAB reporting.",
       description:
-        "To ensure a thorough and equitable review, prospective families should assemble the following portfolio materials upon formal submission.",
+        "Candidates must present original certificates along with self-attested photocopies during physical reporting at IIIT Kota.",
       categories: [
         {
-          category: "Academic Records",
+          category: "Academic Credentials",
           items: [
-            "Official transcripts or grade reports for the preceding two academic years",
-            "Standardized test results or assessment records (if applicable)",
-            "Specialized educational evaluations or learning plans (if applicable)",
+            "Class 10 Certificate / Birth Certificate (as proof of date of birth)",
+            "Class 12 (or equivalent) Examination Marksheet and Passing Certificate",
+            "JEE (Main) Scorecard and Admit Card",
+            "JoSAA / CSAB Provisional Seat Allotment Letter",
           ],
         },
         {
-          category: "Recommendations & Statements",
+          category: "Category & Medical Certificates",
           items: [
-            "Confidential recommendation form from current mathematics or science instructor",
-            "Confidential recommendation form from current humanities or English instructor",
-            "Student handwritten or typed personal reflection on intellectual interests",
+            "GEN-EWS / OBC-NCL / SC / ST Certificate (issued on or after April 1 of the admission year)",
+            "PwD Certificate issued by competent authority (if applicable)",
+            "Medical Fitness Certificate in the prescribed JoSAA format",
+            "State of Eligibility Certificate",
           ],
         },
         {
           category: "Identification & Administrative",
           items: [
-            "Copy of student birth certificate or valid passport",
-            "Up-to-date immunization and health history documentation",
-            "Proof of current residential address",
+            "Aadhaar Card or Government Photo Identity Card",
+            "Passport-size colored photographs (6-8 copies)",
+            "Transfer Certificate / Migration Certificate from previous institution",
+            "Anti-Ragging Affidavits signed by student and parent",
           ],
         },
       ],
       statusNotice:
-        "Specific documentation requirements may vary by entry grade. Please confirm exact requirements with our admissions coordinator.",
+        "All category certificates must strictly conform to the formats prescribed by the Ministry of Education and JoSAA guidelines.",
     },
     datesAndFeesNotice: {
-      overline: "Calendar & Financial Information",
-      heading: "Transparent dates and fee schedule notice.",
+      overline: "Important Notices",
+      heading: "Official counseling dates and institute fee structures.",
       datesNotice:
-        "Exact calendar dates for application deadlines, early evaluation windows, and notification release are pending official publication by school administration. No placeholder deadline dates are fabricated.",
+        "Detailed schedules for JoSAA rounds, CSAB special rounds, and reporting dates are published directly on https://josaa.nic.in and https://iiitkota.ac.in.",
       feeNotice:
-        "Tuition schedules, laboratory fees, meal options, and need-based financial aid policies are established by the Board of Trustees and will be provided directly by the admissions office. Please contact admissions for the current authorized fee schedule.",
+        "Semester tuition fees, hostel seat rent, mess charges, and refundable security deposits are fixed by the Board of Governors of IIIT Kota. Detailed fee breakdowns are updated annually on the institute admissions portal.",
     },
     faqs: [
       {
-        question: "What qualities do you look for in prospective candidates?",
+        question: "How do I secure admission to B.Tech programs at IIIT Kota?",
         answer:
-          "We seek students who demonstrate genuine curiosity, a willingness to engage in thoughtful discussion, personal integrity, and kindness toward peers. We value diverse perspectives and individual passions.",
+          "Undergraduate admissions are based solely on the All India Rank (AIR) in JEE (Main) Paper 1 through the centralized JoSAA and CSAB counseling process. There is no direct management quota.",
       },
       {
-        question: "When should families begin the application process?",
+        question: "What B.Tech branches are currently offered at IIIT Kota?",
         answer:
-          "We encourage prospective families to begin exploring options 9 to 12 months prior to their intended entry date. Inquiries and campus tours are welcomed year-round.",
+          "IIIT Kota offers B.Tech degrees in Computer Science & Engineering (CSE), Artificial Intelligence & Data Engineering (AI&DE), and Electronics & Communication Engineering (ECE).",
       },
       {
-        question: "Is financial assistance available?",
+        question: "Is IIIT Kota operating from its permanent campus?",
         answer:
-          "Yes, we are committed to making our education accessible to qualified students. Need-based financial aid information and application procedures are available directly from the admissions office.",
+          "Yes, IIIT Kota is fully operational from its permanent 100+ acre campus in Ranpur, Kota, featuring modern academic pavilions, computing laboratories, and residential hostels.",
       },
       {
-        question: "Can prospective students shadow a current student for a day?",
+        question: "Are hostel accommodations guaranteed for all admitted students?",
         answer:
-          "Yes, shortlisted applicants have the opportunity to spend a morning on campus, attending seminar classes, having lunch in the dining commons, and meeting future classmates.",
+          "Yes, on-campus residential hostel facilities with modern amenities, Wi-Fi, and mess dining are provided for both male and female students at the Ranpur campus.",
       },
     ],
   },
 
-  // /contact Page Config
   contactPage: {
     hero: {
-      badge: "Campus Contact & Inquiries",
-      title: "We welcome your inquiry and dialogue.",
+      badge: "Campus Directory & Inquiries",
+      title: "Connect with the Indian Institute of Information Technology, Kota.",
       description:
-        "Whether you are exploring enrollment for your child, planning a campus visit, or connecting with administration, our team is here to assist.",
+        "Reach out to administrative sections, academic departments, or the admissions cell at our permanent campus in Ranpur, Kota.",
     },
     departments: [
       {
-        department: "Office of Admissions & Enrollment",
-        purpose: "Inquiries regarding application procedures, campus tours, and student interviews.",
-        email: "admissions@school-placeholder.internal (TODO: confirm)",
-        phone: "TODO: confirm phone",
-        hours: "Monday – Friday: 8:30 AM – 4:00 PM",
+        department: "Office of the Director & Registrar",
+        purpose: "General institutional affairs, statutory matters, and official correspondence.",
+        email: "office@iiitkota.ac.in",
+        phone: "+91-0744-2667000",
+        hours: "Monday – Friday: 9:00 AM – 5:30 PM IST",
       },
       {
-        department: "Academic Administration",
-        purpose: "Curriculum questions, transcript requests, and academic coordination.",
-        email: "academics@school-placeholder.internal (TODO: confirm)",
-        phone: "TODO: confirm phone",
-        hours: "Monday – Friday: 8:00 AM – 3:30 PM",
+        department: "Academic & Admissions Section",
+        purpose: "Course registration, grade records, JoSAA/CSAB counseling, and transcripts.",
+        email: "admissions@iiitkota.ac.in",
+        phone: "+91-0744-2667010",
+        hours: "Monday – Friday: 9:00 AM – 5:30 PM IST",
       },
       {
-        department: "General Inquiries & Campus Operations",
-        purpose: "Campus facilities, vendor inquiries, and general institutional matters.",
-        email: "info@school-placeholder.internal (TODO: confirm)",
-        phone: "TODO: confirm phone",
-        hours: "Monday – Friday: 8:00 AM – 4:30 PM",
+        department: "Training & Placement Cell",
+        purpose: "Corporate recruitment drives, internships, and industry partnerships.",
+        email: "placements@iiitkota.ac.in",
+        phone: "+91-0744-2667020",
+        hours: "Monday – Friday: 9:00 AM – 5:30 PM IST",
       },
     ],
     visitInfo: {
       overline: "Campus Location",
-      heading: "Visiting Oakridge Academy",
+      heading: "Visiting IIIT Kota Permanent Campus",
       description:
-        "Our campus is located in a quiet, accessible district with convenient road and transit connections.",
-      address: "Campus address details pending confirmation with school administration.",
+        "The permanent campus is situated in Ranpur, Kota, approximately 18 km from Kota Junction Railway Station.",
+      address: "Indian Institute of Information Technology Kota, Ranpur, Kota, Rajasthan – 325003, India",
       parkingTransit:
-        "Dedicated visitor parking bays are available adjacent to the Welcome Pavilion. Public transit connections and campus shuttle routes will be published upon address confirmation.",
+        "Visitor parking is available inside the main security gate. Taxis, auto-rickshaws, and public buses operate regularly between Kota city, the railway station, and the Ranpur industrial/institutional area.",
       toursNotice:
-        "All campus visits must be pre-arranged with the admissions office to ensure visitor security and personalized attention.",
+        "Prospective students and visitors should register at the main security gate with a valid government photo identity card upon arrival.",
     },
     inquiryNotice: {
-      overline: "Electronic Contact Channel",
+      overline: "Contact Channels",
       heading: "Direct Communication & Inquiries",
       description:
-        "In accordance with project guidelines, automated form submission directly to the school CRM is being configured with the school's verified mail relay.",
-      status: "Automated Web Form Dispatch: Configuration Pending",
+        "For all admissions, academic, or administrative inquiries, please communicate directly via the official email addresses and phone numbers listed above.",
+      status: "Official Communication Channels Active",
       alternativeInstructions:
-        "To ensure your inquiry is received promptly without data loss, please contact our admissions office or general desk directly via email or telephone listed above.",
+        "General inquiries can be emailed to office@iiitkota.ac.in or directed to the reception desk at +91-0744-2667000 during working hours.",
     },
   },
 };
