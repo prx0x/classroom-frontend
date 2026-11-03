@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "./gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "./gsap";
 
 /**
  * Subtle scroll reveal for editorial images and visual compositions.

@@ -23,6 +23,12 @@ export const SiteHeader: React.FC = () => {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--pub-forest)] focus:text-[var(--pub-white)] focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--pub-gold)]"
+      >
+        Skip to main content
+      </a>
       <header
         className={`sticky top-0 z-40 bg-[var(--pub-paper)]/95 backdrop-blur-md border-b border-[var(--pub-border)] transition-all duration-200 ${
           scrolled ? "shadow-sm bg-[var(--pub-paper)]/98" : ""

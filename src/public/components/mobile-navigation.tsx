@@ -66,12 +66,17 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
           {/* Header row in mobile menu */}
           <div className="flex items-center justify-between border-b border-[var(--pub-border-subtle)] pb-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-[var(--pub-forest)] text-[var(--pub-white)] flex items-center justify-center font-bold public-serif text-sm">
-                O
+              <div className="w-8 h-8 rounded-full bg-[var(--pub-forest)] text-[var(--pub-white)] flex items-center justify-center font-bold public-serif text-xs tracking-tight">
+                IK
               </div>
-              <span className="font-semibold text-base public-serif text-[var(--pub-ink)]">
-                {schoolConfig.name.split(" (")[0]}
-              </span>
+              <div className="flex flex-col">
+                <span className="font-semibold text-base public-serif text-[var(--pub-ink)] leading-tight">
+                  {schoolConfig.shortName}
+                </span>
+                <span className="text-[10px] text-[var(--pub-muted)] uppercase tracking-wider font-medium">
+                  Institute of National Importance
+                </span>
+              </div>
             </div>
             <button
               ref={closeButtonRef}

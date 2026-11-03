@@ -7,16 +7,7 @@ import { SectionHeading } from "../components/section-heading";
 import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
 import { useScrollReveal } from "../motion/use-scroll-reveal";
-import {
-  BookOpen,
-  GraduationCap,
-  Sparkles,
-  Layers,
-  FileCheck2,
-  Calendar,
-  AlertCircle,
-  CheckCircle2,
-} from "lucide-react";
+import { Calendar } from "lucide-react";
 
 export const AcademicsPage: React.FC = () => {
   const { academics } = schoolConfig;

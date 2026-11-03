@@ -4,8 +4,6 @@ import { schoolConfig } from "@/config/school";
 import { usePageMeta } from "../hooks/use-page-meta";
 import { PageHero } from "../components/page-hero";
 import { SectionHeading } from "../components/section-heading";
-import { EditorialImage } from "../components/editorial-image";
-import { CallToAction } from "../components/call-to-action";
 import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
   Mail,
@@ -15,8 +13,6 @@ import {
   ShieldCheck,
   Send,
   AlertCircle,
-  CheckCircle2,
-  ExternalLink,
   GraduationCap,
 } from "lucide-react";
 

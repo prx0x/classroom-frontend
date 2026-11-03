@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "./gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "./gsap";
 
 export interface ScrollRevealOptions {
   /** Selector for elements to animate within the container (default: '[data-reveal]') */

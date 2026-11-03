@@ -8,14 +8,8 @@ import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
 import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
-  Compass,
-  Building,
-  Shield,
   Clock,
-  MapPin,
   CheckCircle2,
-  CalendarCheck,
-  AlertCircle,
 } from "lucide-react";
 
 export const CampusPage: React.FC = () => {

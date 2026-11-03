@@ -6,6 +6,7 @@ import { EditorialImage } from "../components/editorial-image";
 import { CallToAction } from "../components/call-to-action";
 import { CinematicHomepage } from "../cinematic/CinematicHomepage";
 import { useScrollReveal } from "../motion/use-scroll-reveal";
+import { usePageMeta } from "../hooks/use-page-meta";
 import {
   ArrowRight,
   GraduationCap,
@@ -16,6 +17,11 @@ import {
 
 export const HomePage: React.FC = () => {
   const { campusPreview, studentLifePreview, admissionsCta, portalBanner } = schoolConfig;
+
+  usePageMeta({
+    title: "Home",
+    description: schoolConfig.meta?.defaultDescription || schoolConfig.positioningStatement,
+  });
 
   // GSAP Scroll Reveal hooks for the foundational content sections below the cinematic sequence
   const campusRef = useScrollReveal({ selector: ".pub-card", y: 24, stagger: 0.12 });

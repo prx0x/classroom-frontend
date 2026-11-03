@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { ShieldAlert, Image as ImageIcon } from "lucide-react";
-import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "../motion/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "../motion/gsap";
 
 export interface EditorialImageProps {
   aspectRatio?: "16/10" | "16/9" | "4/3" | "1/1";

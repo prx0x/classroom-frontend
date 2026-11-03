@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router";
 import { schoolConfig } from "@/config/school";
 import { usePageMeta } from "../hooks/use-page-meta";
 import { PageHero } from "../components/page-hero";
@@ -7,16 +6,6 @@ import { SectionHeading } from "../components/section-heading";
 import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
 import { useScrollReveal } from "../motion/use-scroll-reveal";
-import {
-  Sparkles,
-  HeartHandshake,
-  Calendar,
-  Users,
-  Trophy,
-  Palette,
-  CheckCircle2,
-  AlertCircle,
-} from "lucide-react";
 
 export const StudentLifePage: React.FC = () => {
   const { studentLife } = schoolConfig;

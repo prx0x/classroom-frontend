@@ -21,7 +21,7 @@ export const ExteriorSkylineVista: React.FC<{
       >
         <picture>
           <source
-            srcSet="/images/college-entrance.jpg 1920w, /images/college-entrance.png 3840w"
+            srcSet="/images/college-entrance.jpg"
             type="image/jpeg"
           />
           <img
@@ -168,7 +168,7 @@ export const ArchwayColonnadePortal: React.FC<{
       {/* Massive Overhead Arch Vault (Top) */}
       <div
         ref={archVaultRef}
-        className="absolute top-0 left-0 right-0 h-[42%] z-20 flex flex-col items-center justify-start pointer-events-none"
+        className="cinematic-arch-vault absolute top-0 left-0 right-0 h-[42%] z-20 flex flex-col items-center justify-start pointer-events-none"
       >
         <div className="w-full h-16 sm:h-24 bg-[#142823] border-b-2 border-[var(--pub-gold)]/50 shadow-2xl flex flex-col items-center justify-center px-4">
           <div className="text-[10px] sm:text-xs font-mono tracking-[0.3em] uppercase text-[var(--pub-gold)]">
@@ -211,7 +211,7 @@ export const ArchwayColonnadePortal: React.FC<{
       {/* Flanking Colossal Left Pillar */}
       <div
         ref={leftPillarRef}
-        className="absolute top-0 bottom-0 left-0 w-[24%] sm:w-[20%] max-w-[280px] bg-gradient-to-r from-[#10201d] via-[#19322c] to-[#122421] border-r border-[var(--pub-gold)]/40 shadow-2xl z-20 flex flex-col justify-between p-4 pointer-events-none"
+        className="cinematic-arch-pillar absolute top-0 bottom-0 left-0 w-[24%] sm:w-[20%] max-w-[280px] bg-gradient-to-r from-[#10201d] via-[#19322c] to-[#122421] border-r border-[var(--pub-gold)]/40 shadow-2xl z-20 flex flex-col justify-between p-4 pointer-events-none"
       >
         <div className="w-full h-12 border-b border-[var(--pub-gold)]/30 bg-[#1d3831] rounded-b-sm flex items-center justify-center">
           <span className="text-[9px] font-mono tracking-widest text-[var(--pub-gold)]/70 uppercase">
@@ -233,7 +233,7 @@ export const ArchwayColonnadePortal: React.FC<{
       {/* Flanking Colossal Right Pillar */}
       <div
         ref={rightPillarRef}
-        className="absolute top-0 bottom-0 right-0 w-[24%] sm:w-[20%] max-w-[280px] bg-gradient-to-l from-[#10201d] via-[#19322c] to-[#122421] border-l border-[var(--pub-gold)]/40 shadow-2xl z-20 flex flex-col justify-between p-4 pointer-events-none"
+        className="cinematic-arch-pillar absolute top-0 bottom-0 right-0 w-[24%] sm:w-[20%] max-w-[280px] bg-gradient-to-l from-[#10201d] via-[#19322c] to-[#122421] border-l border-[var(--pub-gold)]/40 shadow-2xl z-20 flex flex-col justify-between p-4 pointer-events-none"
       >
         <div className="w-full h-12 border-b border-[var(--pub-gold)]/30 bg-[#1d3831] rounded-b-sm flex items-center justify-center">
           <span className="text-[9px] font-mono tracking-widest text-[var(--pub-gold)]/70 uppercase">

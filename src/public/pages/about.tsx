@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router";
 import { schoolConfig } from "@/config/school";
 import { usePageMeta } from "../hooks/use-page-meta";
 import { PageHero } from "../components/page-hero";
@@ -7,16 +6,7 @@ import { SectionHeading } from "../components/section-heading";
 import { ImageTextFeature } from "../components/image-text-feature";
 import { CallToAction } from "../components/call-to-action";
 import { useScrollReveal } from "../motion/use-scroll-reveal";
-import {
-  Compass,
-  ScrollText,
-  ShieldCheck,
-  Users,
-  Award,
-  BookOpen,
-  ArrowRight,
-  AlertCircle,
-} from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 export const AboutPage: React.FC = () => {
   const { about, values } = schoolConfig;

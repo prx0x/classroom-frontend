@@ -118,7 +118,7 @@ export const CinematicHomepage: React.FC = () => {
               {/* Floating Hero Typography Layer */}
               <div
                 ref={scene1TextRef}
-                className="absolute inset-0 flex items-center justify-center p-6 sm:p-12 z-20 pointer-events-auto"
+                className="cinematic-scene-content absolute inset-0 flex items-center justify-center p-6 sm:p-12 z-20 pointer-events-auto"
               >
                 <div className="max-w-4xl text-center space-y-6">
                   {/* Status Badge */}
@@ -189,7 +189,7 @@ export const CinematicHomepage: React.FC = () => {
               {/* Scene 2 Narrative Card */}
               <div
                 ref={scene2TextRef}
-                className="absolute inset-0 flex items-center justify-center p-6 z-30 pointer-events-auto"
+                className="cinematic-scene-content absolute inset-0 flex items-center justify-center p-6 z-30 pointer-events-auto"
               >
                 <div className="cinematic-card max-w-xl p-8 sm:p-10 text-center space-y-4">
                   <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--pub-gold)]">
@@ -215,7 +215,7 @@ export const CinematicHomepage: React.FC = () => {
             <div ref={scene3Ref} className="cinematic-scene-layer opacity-0">
               <RotundaInteriorVault />
 
-              <div className="absolute inset-0 flex flex-col items-center justify-between p-6 sm:p-12 z-20 pointer-events-auto">
+              <div className="cinematic-scene-content absolute inset-0 flex flex-col items-center justify-between p-6 sm:p-12 z-20 pointer-events-auto">
                 {/* Scene 3 Header Text */}
                 <div ref={scene3TextRef} className="text-center space-y-2 mt-16 max-w-2xl">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--pub-gold)]">
@@ -282,7 +282,7 @@ export const CinematicHomepage: React.FC = () => {
             <div ref={scene4Ref} className="cinematic-scene-layer opacity-0">
               <div className="absolute inset-0 bg-gradient-to-b from-[#11231f] via-[#162e28] to-[#0e1a17]" />
 
-              <div className="absolute inset-0 flex flex-col items-center justify-between p-6 sm:p-10 z-20 pointer-events-auto">
+              <div className="cinematic-scene-content absolute inset-0 flex flex-col items-center justify-between p-6 sm:p-10 z-20 pointer-events-auto">
                 {/* Header */}
                 <div ref={scene4TextRef} className="text-center space-y-2 mt-16 max-w-2xl">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--pub-gold)]">
@@ -372,7 +372,7 @@ export const CinematicHomepage: React.FC = () => {
 
               <div
                 ref={scene5ContentRef}
-                className="absolute inset-0 flex items-center justify-center p-6 sm:p-12 z-20 pointer-events-auto overflow-y-auto"
+                className="cinematic-scene-content absolute inset-0 flex items-center justify-center p-6 sm:p-12 z-20 pointer-events-auto overflow-y-auto"
               >
                 <div className="max-w-5xl w-full text-center space-y-8 my-auto py-8">
                   {/* Institutional Crest */}

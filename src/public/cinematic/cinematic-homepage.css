@@ -173,8 +173,8 @@
   z-index: 30;
 }
 
-/* Reduced Motion Fallback Mode */
-@media (prefers-reduced-motion: reduce) {
+/* Mobile (< 768px) and Reduced-Motion Fallback Modes */
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
   .cinematic-track {
     min-height: auto !important;
     height: auto !important;
@@ -186,18 +186,60 @@
     perspective: none !important;
     overflow: visible !important;
     transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  .cinematic-camera,
-  .cinematic-scene-layer {
+  .cinematic-camera {
     position: relative !important;
     inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
     transform: none !important;
-    opacity: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
     pointer-events: auto !important;
   }
 
-  .cinematic-hud {
+  .cinematic-scene-layer {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: visible !important;
+    border-bottom: 1px solid rgba(195, 154, 82, 0.2) !important;
+  }
+
+  .cinematic-scene-content {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 3.5rem 1rem !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .cinematic-hud,
+  .cinematic-reticle-corner {
+    display: none !important;
+  }
+
+  .cinematic-arch-pillar {
+    display: none !important;
+  }
+
+  .cinematic-arch-vault {
     display: none !important;
   }
 }

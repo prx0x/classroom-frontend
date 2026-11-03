@@ -10,11 +10,8 @@ import { useScrollReveal } from "../motion/use-scroll-reveal";
 import {
   FileText,
   Calendar,
-  HelpCircle,
   CheckCircle2,
   AlertCircle,
-  HelpCircle as QuestionIcon,
-  ChevronDown,
 } from "lucide-react";
 
 export const AdmissionsPage: React.FC = () => {
