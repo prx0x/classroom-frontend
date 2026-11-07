@@ -1,9 +1,9 @@
 import { GraduationCap, School } from "lucide-react";
 
 export const USER_ROLES = {
-    STUDENT: "student",
-    TEACHER: "teacher",
-    ADMIN: "admin",
+    STUDENT: "STUDENT",
+    TEACHER: "TEACHER",
+    ADMIN: "ADMIN",
 };
 
 export const ROLE_OPTIONS = [

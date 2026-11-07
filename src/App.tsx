@@ -1,5 +1,6 @@
 import {
   Refine,
+  Authenticated,
 } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
@@ -9,9 +10,9 @@ import routerProvider, {
   DocumentTitleHandler,
 } from "@refinedev/react-router";
 import { dataProvider } from "./providers/data";
-// import { Login } from "./pages/login";
-// import { Register } from "./pages/register";
-// import { ForgotPassword } from "./pages/forgot-password";
+import { authProvider } from "./providers/auth";
+import { accessControlProvider } from "./providers/accessControl";
+import { LoginPage } from "./pages/login";
 import { ErrorComponent } from "./components/refine-ui/layout/error-component";
 import { Layout } from "./components/refine-ui/layout/layout";
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider";
@@ -62,6 +63,7 @@ const customTitleHandler = ({
 
   const publicTitles: Record<string, string> = {
     "/": "Home | IIIT Kota",
+    "/login": "Sign In | IIIT Kota Classroom Portal",
     "/about": "About | IIIT Kota",
     "/academics": "Academics | IIIT Kota",
     "/campus": "Campus | IIIT Kota",
@@ -84,6 +86,8 @@ function App() {
           <DevtoolsProvider>
             <Refine
               dataProvider={dataProvider}
+              authProvider={authProvider}
+              accessControlProvider={accessControlProvider}
               notificationProvider={useNotificationProvider()}
               routerProvider={routerProvider}
               options={{
@@ -127,13 +131,28 @@ function App() {
                   <Route path="contact" element={<ContactPage />} />
                 </Route>
 
-                {/* Refine Classroom Portal Routes */}
+                {/* Authentication Page */}
+                <Route path="login" element={<LoginPage />} />
+
+                {/* Refine Classroom Portal Routes - Protected */}
                 <Route
                   path="portal"
                   element={
-                    <Layout>
-                      <Outlet />
-                    </Layout>
+                    <Authenticated
+                      key="portal-auth"
+                      fallback={<Navigate to="/login" replace />}
+                      loading={
+                        <div className="flex h-screen items-center justify-center">
+                          <div className="text-sm text-muted-foreground animate-pulse">
+                            Loading portal session...
+                          </div>
+                        </div>
+                      }
+                    >
+                      <Layout>
+                        <Outlet />
+                      </Layout>
+                    </Authenticated>
                   }
                 >
                   <Route index element={<Dashboard />} />

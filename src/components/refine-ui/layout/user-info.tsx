@@ -4,12 +4,14 @@ import { UserAvatar } from "@/components/refine-ui/layout/user-avatar";
 import { cn } from "@/lib/utils";
 
 type User = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  fullName: string;
+  id: string | number;
+  name?: string;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
   email: string;
-  avatar?: string;
+  avatar?: string | null;
+  role?: string;
 };
 
 export function UserInfo() {
@@ -27,7 +29,11 @@ export function UserInfo() {
     );
   }
 
-  const { firstName, lastName, email } = user;
+  const displayName =
+    user.fullName ||
+    user.name ||
+    [user.firstName, user.lastName].filter(Boolean).join(" ") ||
+    user.email;
 
   return (
     <div className={cn("flex", "items-center", "gap-x-2")}>
@@ -41,10 +47,17 @@ export function UserInfo() {
           "text-left"
         )}
       >
-        <span className={cn("text-sm", "font-medium", "text-muted-foreground")}>
-          {firstName} {lastName}
-        </span>
-        <span className={cn("text-xs", "text-muted-foreground")}>{email}</span>
+        <div className="flex items-center gap-1.5">
+          <span className={cn("text-sm", "font-medium", "text-foreground")}>
+            {displayName}
+          </span>
+          {user.role && (
+            <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-primary/10 text-primary">
+              {user.role}
+            </span>
+          )}
+        </div>
+        <span className={cn("text-xs", "text-muted-foreground")}>{user.email}</span>
       </div>
     </div>
   );

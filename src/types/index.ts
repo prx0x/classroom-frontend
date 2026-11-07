@@ -67,9 +67,9 @@ export interface UploadWidgetProps {
 }
 
 export enum UserRole {
-    STUDENT = "student",
-    TEACHER = "teacher",
-    ADMIN = "admin",
+    STUDENT = "STUDENT",
+    TEACHER = "TEACHER",
+    ADMIN = "ADMIN",
 }
 
 export type User = {

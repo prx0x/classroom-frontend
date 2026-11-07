@@ -4,12 +4,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
 type User = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  fullName: string;
+  id: string | number;
+  name?: string;
+  fullName?: string;
   email: string;
-  avatar?: string;
+  avatar?: string | null;
+  image?: string | null;
 };
 
 export function UserAvatar() {
@@ -19,12 +19,13 @@ export function UserAvatar() {
     return <Skeleton className={cn("h-10", "w-10", "rounded-full")} />;
   }
 
-  const { fullName, avatar } = user;
+  const displayName = user.fullName || user.name || user.email || "User";
+  const avatarUrl = user.avatar || user.image;
 
   return (
     <Avatar className={cn("h-10", "w-10")}>
-      {avatar && <AvatarImage src={avatar} alt={fullName} />}
-      <AvatarFallback>{getInitials(fullName)}</AvatarFallback>
+      {avatarUrl && <AvatarImage src={avatarUrl} alt={displayName} />}
+      <AvatarFallback>{getInitials(displayName)}</AvatarFallback>
     </Avatar>
   );
 }

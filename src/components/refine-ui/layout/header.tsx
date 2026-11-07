@@ -2,6 +2,7 @@ import {
   useRefineOptions,
   useActiveAuthProvider,
   useLogout,
+  useGetIdentity,
 } from "@refinedev/core";
 import {
   DropdownMenu,
@@ -119,6 +120,7 @@ function MobileHeader() {
 
 const UserDropdown = () => {
   const { mutate: logout, isPending: isLoggingOut } = useLogout();
+  const { data: user } = useGetIdentity<{ name?: string; fullName?: string; email?: string; role?: string }>();
 
   const authProvider = useActiveAuthProvider();
 
@@ -126,19 +128,33 @@ const UserDropdown = () => {
     return null;
   }
 
+  const displayName = user?.fullName || user?.name || user?.email || "User";
+
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className="focus:outline-none">
         <UserAvatar />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="w-56">
+        <div className="px-2 py-1.5 border-b mb-1">
+          <p className="text-sm font-semibold truncate">{displayName}</p>
+          <div className="flex items-center justify-between text-xs text-muted-foreground mt-0.5">
+            <span className="truncate">{user?.email}</span>
+            {user?.role && (
+              <span className="ml-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary uppercase">
+                {user.role}
+              </span>
+            )}
+          </div>
+        </div>
         <DropdownMenuItem
           onClick={() => {
             logout();
           }}
+          className="cursor-pointer"
         >
           <LogOutIcon
-            className={cn("text-destructive", "hover:text-destructive")}
+            className={cn("text-destructive", "hover:text-destructive", "h-4 w-4 mr-2")}
           />
           <span className={cn("text-destructive", "hover:text-destructive")}>
             {isLoggingOut ? "Logging out..." : "Logout"}
