@@ -5,6 +5,7 @@ import {
   useMenu,
   useLink,
   useRefineOptions,
+  CanAccess,
   type TreeMenuItem,
 } from "@refinedev/core";
 import {
@@ -56,11 +57,16 @@ export function Sidebar() {
         )}
       >
         {menuItems.map((item: TreeMenuItem) => (
-          <SidebarItem
+          <CanAccess
             key={item.key || item.name}
-            item={item}
-            selectedKey={selectedKey}
-          />
+            resource={item.name}
+            action="list"
+          >
+            <SidebarItem
+              item={item}
+              selectedKey={selectedKey}
+            />
+          </CanAccess>
         ))}
       </ShadcnSidebarContent>
     </ShadcnSidebar>
@@ -273,6 +279,27 @@ function SidebarHeader() {
 }
 
 function getDisplayName(item: TreeMenuItem) {
+  const cached = typeof window !== "undefined" ? localStorage.getItem("auth_user") : null;
+  let role = "STUDENT";
+  if (cached) {
+    try {
+      const u = JSON.parse(cached);
+      if (u.role) role = u.role;
+    } catch {
+      // ignore
+    }
+  }
+
+  if (item.name === "classes") {
+    if (role === "TEACHER") return "My Classes";
+    if (role === "STUDENT") return "Classes";
+  }
+
+  if (item.name === "enrollments") {
+    if (role === "TEACHER") return "Class Rosters";
+    if (role === "STUDENT") return "My Enrollments";
+  }
+
   return item.meta?.label ?? item.label ?? item.name;
 }
 

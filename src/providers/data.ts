@@ -16,20 +16,56 @@ const getAuthHeaders = () => {
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
+const extractData = (payload: Record<string, unknown>) => {
+  return (
+    payload.data ??
+    payload.class ??
+    payload.enrollment ??
+    payload.department ??
+    payload.subject ??
+    payload.user ??
+    payload.teacher ??
+    payload.student ??
+    payload
+  );
+};
+
 const options: CreateDataProviderOptions = {
   getList: {
     getEndpoint: ({ resource }) => resource,
     buildHeaders: async () => getAuthHeaders(),
-    buildQueryParams: async ({ resource, pagination, filters }) => {
+    buildQueryParams: async ({ pagination, filters }) => {
       const page = pagination?.currentPage ?? 1;
       const pageSize = pagination?.pageSize ?? 10;
       const params: Record<string, string | number> = { page, limit: pageSize };
       filters?.forEach((filter) => {
         const field = "field" in filter ? filter.field : "";
-        const value = String(filter.value);
-        if (resource === "subjects") {
-          if (field === "department") params.department = value;
-          if (field === "name" || field === "code") params.search = value;
+        const value = String(filter.value ?? "");
+        if (!value || value === "all") return;
+
+        if (field === "department" || field === "departmentId") {
+          params.department = value;
+          params.departmentId = value;
+        } else if (field === "subject" || field === "subjectId") {
+          params.subjectId = value;
+        } else if (field === "teacher" || field === "teacherId") {
+          params.teacherId = value;
+        } else if (field === "class" || field === "classId") {
+          params.classId = value;
+        } else if (field === "student" || field === "studentId") {
+          params.studentId = value;
+        } else if (
+          field === "search" ||
+          field === "name" ||
+          field === "code" ||
+          field === "email" ||
+          field === "q"
+        ) {
+          params.search = value;
+        } else if (field === "status") {
+          params.status = value;
+        } else if (field === "role") {
+          params.role = value;
         }
       });
       return params;
@@ -37,25 +73,54 @@ const options: CreateDataProviderOptions = {
 
     mapResponse: async (response) => {
       const payload: ListResponse = await response.clone().json();
-      return payload.data ?? payload.subjects ?? [];
+      const list =
+        payload.data ??
+        payload.classes ??
+        payload.enrollments ??
+        payload.subjects ??
+        (payload as Record<string, unknown>).departments ??
+        (payload as Record<string, unknown>).users ??
+        (payload as Record<string, unknown>).teachers ??
+        (payload as Record<string, unknown>).students ??
+        [];
+      return (Array.isArray(list) ? list : []) as any[];
     },
 
     getTotalCount: async (response) => {
       const payload: ListResponse = await response.clone().json();
-      return payload.pagination?.total ?? payload.data?.length ?? 0;
+      return (
+        payload.pagination?.total ??
+        (Array.isArray(payload.data) ? payload.data.length : 0)
+      );
     },
   },
   getOne: {
     buildHeaders: async () => getAuthHeaders(),
+    mapResponse: async (response) => {
+      const payload = await response.clone().json();
+      return extractData(payload as Record<string, unknown>);
+    },
   },
   create: {
     buildHeaders: async () => getAuthHeaders(),
+    mapResponse: async (response) => {
+      const payload = await response.clone().json();
+      return extractData(payload as Record<string, unknown>);
+    },
   },
   update: {
     buildHeaders: async () => getAuthHeaders(),
+    mapResponse: async (response) => {
+      const payload = await response.clone().json();
+      return extractData(payload as Record<string, unknown>);
+    },
   },
   deleteOne: {
     buildHeaders: async () => getAuthHeaders(),
+    mapResponse: async (response) => {
+      const payload = await response.clone().json();
+      return (payload as Record<string, unknown>).data ?? payload;
+    },
   },
 };
 

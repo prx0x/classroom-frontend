@@ -18,16 +18,49 @@ import { Layout } from "./components/refine-ui/layout/layout";
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider";
 import { Toaster } from "./components/refine-ui/notification/toaster";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
-import { BookOpen, GraduationCap, Home } from "lucide-react";
+import {
+  BookOpen,
+  GraduationCap,
+  Home,
+  Building2,
+  Users,
+  UserCheck,
+  ClipboardList,
+  CalendarDays,
+} from "lucide-react";
 
 // Existing classroom portal pages
 import Dashboard from "./pages/dashboard";
+
+// Phase 3 Academic Master Data & User Management pages
+import DepartmentList from "./pages/departments/list";
+import DepartmentCreate from "./pages/departments/create";
+import DepartmentEdit from "./pages/departments/edit";
+import DepartmentShow from "./pages/departments/show";
+
 import SubjectList from "./pages/subjects/list";
 import SubjectCreate from "./pages/subjects/create";
+import SubjectEdit from "./pages/subjects/edit";
+import SubjectShow from "./pages/subjects/show";
+
+import TeacherList from "./pages/teachers/list";
+import TeacherCreate from "./pages/teachers/create";
+import TeacherEdit from "./pages/teachers/edit";
+import TeacherShow from "./pages/teachers/show";
+
+import StudentList from "./pages/students/list";
+import StudentCreate from "./pages/students/create";
+import StudentEdit from "./pages/students/edit";
+import StudentShow from "./pages/students/show";
+
 import ClassesList from "./pages/classes/list";
 import ClassesCreate from "./pages/classes/create";
+import ClassesEdit from "./pages/classes/edit";
+import ClassesShow from "./pages/classes/show";
+import EnrollmentsList from "./pages/enrollments/list";
+import SchedulesPage from "./pages/schedules";
 
-// Public website components & pages (Phase 1 foundation)
+// Public website components & pages
 import { PublicLayout } from "./public/components/public-layout";
 import { HomePage } from "./public/pages/home";
 import { AboutPage } from "./public/pages/about";
@@ -106,16 +139,54 @@ function App() {
                   meta: { label: "Dashboard", icon: <Home /> },
                 },
                 {
+                  name: "departments",
+                  list: "/portal/departments",
+                  create: "/portal/departments/create",
+                  edit: "/portal/departments/edit/:id",
+                  show: "/portal/departments/show/:id",
+                  meta: { label: "Departments", icon: <Building2 /> },
+                },
+                {
                   name: "subjects",
                   list: "/portal/subjects",
                   create: "/portal/subjects/create",
+                  edit: "/portal/subjects/edit/:id",
+                  show: "/portal/subjects/show/:id",
                   meta: { label: "Subjects", icon: <BookOpen /> },
+                },
+                {
+                  name: "teachers",
+                  list: "/portal/teachers",
+                  create: "/portal/teachers/create",
+                  edit: "/portal/teachers/edit/:id",
+                  show: "/portal/teachers/show/:id",
+                  meta: { label: "Teachers", icon: <Users /> },
+                },
+                {
+                  name: "students",
+                  list: "/portal/students",
+                  create: "/portal/students/create",
+                  edit: "/portal/students/edit/:id",
+                  show: "/portal/students/show/:id",
+                  meta: { label: "Students", icon: <UserCheck /> },
                 },
                 {
                   name: "classes",
                   list: "/portal/classes",
                   create: "/portal/classes/create",
+                  edit: "/portal/classes/edit/:id",
+                  show: "/portal/classes/show/:id",
                   meta: { label: "Classes", icon: <GraduationCap /> },
+                },
+                {
+                  name: "enrollments",
+                  list: "/portal/enrollments",
+                  meta: { label: "Enrollments", icon: <ClipboardList /> },
+                },
+                {
+                  name: "schedules",
+                  list: "/portal/schedules",
+                  meta: { label: "Schedules", icon: <CalendarDays /> },
                 },
               ]}
             >
@@ -156,22 +227,70 @@ function App() {
                   }
                 >
                   <Route index element={<Dashboard />} />
+
+                  {/* Department Management Routes */}
+                  <Route path="departments">
+                    <Route index element={<DepartmentList />} />
+                    <Route path="create" element={<DepartmentCreate />} />
+                    <Route path="edit/:id" element={<DepartmentEdit />} />
+                    <Route path="show/:id" element={<DepartmentShow />} />
+                  </Route>
+
+                  {/* Subject Management Routes */}
                   <Route path="subjects">
                     <Route index element={<SubjectList />} />
                     <Route path="create" element={<SubjectCreate />} />
+                    <Route path="edit/:id" element={<SubjectEdit />} />
+                    <Route path="show/:id" element={<SubjectShow />} />
                   </Route>
+
+                  {/* Teacher Management Routes */}
+                  <Route path="teachers">
+                    <Route index element={<TeacherList />} />
+                    <Route path="create" element={<TeacherCreate />} />
+                    <Route path="edit/:id" element={<TeacherEdit />} />
+                    <Route path="show/:id" element={<TeacherShow />} />
+                  </Route>
+
+                  {/* Student Management Routes */}
+                  <Route path="students">
+                    <Route index element={<StudentList />} />
+                    <Route path="create" element={<StudentCreate />} />
+                    <Route path="edit/:id" element={<StudentEdit />} />
+                    <Route path="show/:id" element={<StudentShow />} />
+                  </Route>
+
+                  {/* Classes Routes */}
                   <Route path="classes">
                     <Route index element={<ClassesList />} />
                     <Route path="create" element={<ClassesCreate />} />
+                    <Route path="edit/:id" element={<ClassesEdit />} />
+                    <Route path="show/:id" element={<ClassesShow />} />
+                    <Route path=":id" element={<ClassesShow />} />
+                    <Route path=":id/edit" element={<ClassesEdit />} />
                   </Route>
+
+                  {/* Enrollments Routes */}
+                  <Route path="enrollments" element={<EnrollmentsList />} />
+
+                  {/* Academic Schedules Route */}
+                  <Route path="schedules" element={<SchedulesPage />} />
                 </Route>
 
                 {/* Backward-Compatible Redirects for Previous Direct Portal URLs */}
                 <Route path="dashboard" element={<Navigate to="/portal" replace />} />
+                <Route path="departments" element={<Navigate to="/portal/departments" replace />} />
+                <Route path="departments/create" element={<Navigate to="/portal/departments/create" replace />} />
                 <Route path="subjects" element={<Navigate to="/portal/subjects" replace />} />
                 <Route path="subjects/create" element={<Navigate to="/portal/subjects/create" replace />} />
+                <Route path="teachers" element={<Navigate to="/portal/teachers" replace />} />
+                <Route path="teachers/create" element={<Navigate to="/portal/teachers/create" replace />} />
+                <Route path="students" element={<Navigate to="/portal/students" replace />} />
+                <Route path="students/create" element={<Navigate to="/portal/students/create" replace />} />
                 <Route path="classes" element={<Navigate to="/portal/classes" replace />} />
                 <Route path="classes/create" element={<Navigate to="/portal/classes/create" replace />} />
+                <Route path="enrollments" element={<Navigate to="/portal/enrollments" replace />} />
+                <Route path="schedules" element={<Navigate to="/portal/schedules" replace />} />
 
                 {/* Catch-All / 404 Route */}
                 <Route path="*" element={<ErrorComponent />} />
